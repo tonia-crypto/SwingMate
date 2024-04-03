@@ -1,0 +1,74 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f4;
+    color: #333;
+    overflow: hidden; 
+    background-image: url('background-image.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    height: 100vh;
+    background-repeat: no-repeat; 
+}
+
+header {
+    color: #f610b9;
+    padding-top: 30px;
+    min-height: 70px;
+    text-align: center;
+}
+
+nav ul {
+    color: white;
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+nav ul li a {
+    color: rgb(158, 13, 119);
+    font-weight: bold;
+}
+
+section {
+    padding: 20px;
+    margin: 20px 0;
+}
+
+p {
+    color: rgb(220, 17, 166);
+    text-align: center;
+}
+
+section h2{
+    color: rgb(220, 17, 166);
+    text-align: center;
+}
+
+
+/* .tennis-ball-rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1; 
+}
+
+.tennis-ball {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-image: url('tennis-ball.jpg');
+    background-size: cover;
+    border-radius: 50%;
+    opacity: 0.7;
+} */
