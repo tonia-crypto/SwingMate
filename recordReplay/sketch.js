@@ -16,6 +16,7 @@ let replayCounter = 0;
 let upperarmBluetoothManager;
 let forearmBluetoothManager;
 let myArm;
+let myDom;
 
 function startRecord() {
   recordCounter = NUM_FRAMES_RECORD;
@@ -35,10 +36,13 @@ function setup() {
   forearmBluetoothManager = new BluetoothManager(FOREARM_CHIP_NAME);
 
   myArm = new Arm();
+
   createCanvas(710, 600, WEBGL);
   angleMode(DEGREES);
 
   frameRate(10);
+
+  myDom = new Dom(upperarmBluetoothManager, forearmBluetoothManager);
 
   const connectUpperarmBtn = createButton("connect upperarm");
   connectUpperarmBtn.mousePressed(() => {
