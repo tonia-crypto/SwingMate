@@ -42,31 +42,11 @@ function setup() {
 
   frameRate(10);
 
-  myDom = new Dom(upperarmBluetoothManager, forearmBluetoothManager);
-
-  const connectUpperarmBtn = createButton("connect upperarm");
-  connectUpperarmBtn.mousePressed(() => {
-    upperarmBluetoothManager.scanDevices();
-  });
-
-  const disconnectUpperarmBtn = createButton("disconnect upperarm");
-  disconnectUpperarmBtn.mousePressed(() => {
-    upperarmBluetoothManager.disconnect();
-  });
+  myDom = new Dom(upperarmBluetoothManager, forearmBluetoothManager, myArm);
 
   const zeroUpper = createButton("zero Upper");
   zeroUpper.mousePressed(() => {
     myArm.zeroUpper();
-  });
-
-  const connectForearmBtn = createButton("connect Forearm");
-  connectForearmBtn.mousePressed(() => {
-    forearmBluetoothManager.scanDevices();
-  });
-
-  const disconnectForearmBtn = createButton("disconnect Forearm");
-  disconnectForearmBtn.mousePressed(() => {
-    forearmBluetoothManager.disconnect();
   });
 
   const zeroFore = createButton("zero Fore");

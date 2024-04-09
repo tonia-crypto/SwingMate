@@ -1,9 +1,8 @@
 class Dom {
-  constructor(upperBluetoothManager, foreBluetoothManager, arm) {
+  constructor(upperBluetoothManager, foreBluetoothManager, myArm) {
     this.upperBluetoothManager = upperBluetoothManager;
     this.foreBluetoothManager = foreBluetoothManager;
-
-    this.upperBluetoothManager.test();
+    this.myArm = myArm;
 
     this.connectUpperBtn = select(ID_TAGS.CONNECT_UPPER_BTN);
     this.zeroUpperBtn = select(ID_TAGS.ZERO_UPPER_BTN);
@@ -13,25 +12,46 @@ class Dom {
     this.replayBtn = select(ID_TAGS.REPLAY_BTN);
 
     this.connectUpperBtn.mousePressed(this.connectUpper.bind(this));
-    this.zeroUpperBtn.mousePressed(this.zeroUpper);
+    this.zeroUpperBtn.mousePressed(this.zeroUpper.bind(this));
     this.connectForeBtn.mousePressed(this.connectFore.bind(this));
-    this.zeroForeBtn.mousePressed(this.zeroFore);
-    this.recordBtn.mousePressed(this.record);
-    this.replayBtn.mousePressed(this.replay);
+    this.zeroForeBtn.mousePressed(this.zeroFore.bind(this));
+    this.recordBtn.mousePressed(this.record.bind(this));
+    this.replayBtn.mousePressed(this.replay.bind(this));
   }
 
-  connectUpper() {
-    console.log("connect upper");
-    this.upperBluetoothManager.scanDevices();
+  async connectUpper() {
+    // TEST ME!!!
+    if (!this.upperBluetoothManager.isConnected()) {
+      await this.upperBluetoothManager.scanDevices();
+    } else {
+      await this.upperBluetoothManager.disconnect();
+    }
+
+    if (this.upperBluetoothManager.isConnected()) {
+      this.connectUpperBtn.html("Disconnect Upperarm");
+    } else {
+      this.connectUpperBtn.html("Connect Upperarm");
+    }
   }
 
   zeroUpper() {
     console.log("zero upper");
   }
 
-  connectFore() {
-    console.log("connect fore");
-    this.foreBluetoothManager.scanDevices();
+  async connectFore() {
+    // TEST ME!!
+    this.foreBluetoothManager.test();
+    if (!this.foreBluetoothManager.isConnected()) {
+      await this.foreBluetoothManager.scanDevices();
+    } else {
+      await this.foreBluetoothManager.disconnect();
+    }
+
+    if (this.foreBluetoothManager.isConnected()) {
+      this.connectForeBtn.html("Disconnect Forearm");
+    } else {
+      this.connectForeBtn.html("Connect Forearm");
+    }
   }
 
   zeroFore() {

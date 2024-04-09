@@ -7,14 +7,10 @@ class BluetoothManager {
     this.connected = false;
   }
 
-  test() {
-    console.log("Pring hello");
-  }
-
   async connectToDevice() {
     if (!this.device) {
       console.error("No device selected");
-      return;
+      return false;
     }
 
     console.log("Connecting to device:", this.device.name);
@@ -25,18 +21,18 @@ class BluetoothManager {
     console.log("Connected to device:", this.device.name);
     this.connected = true;
 
-    return this.characteristic;
+    return true;
   }
 
   async disconnect() {
     if (!this.device) {
       console.error("No device to disconnect from.");
-      return;
+      return false;
     }
 
     if (!this.device.gatt) {
       console.error("Device is not connected.");
-      return;
+      return false;
     }
 
     try {
@@ -44,9 +40,12 @@ class BluetoothManager {
       console.log("Disconnecting from device:", this.device.name);
       await this.device.gatt.disconnect();
       console.log("Disconnected from device:", this.device.name);
+      return true;
     } catch (error) {
       console.error("Error while disconnecting:", error);
     }
+
+    return false;
   }
 
   async scanDevices() {
@@ -89,5 +88,13 @@ class BluetoothManager {
     } catch (error) {
       console.error("Error while reading value:", error);
     }
+  }
+
+  isConnected() {
+    return this.connected;
+  }
+
+  test() {
+    console.log("Pring pring");
   }
 }
