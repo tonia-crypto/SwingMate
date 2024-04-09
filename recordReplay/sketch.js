@@ -44,21 +44,8 @@ function setup() {
 
   myDom = new Dom(upperarmBluetoothManager, forearmBluetoothManager, myArm);
 
-  const zeroUpper = createButton("zero Upper");
-  zeroUpper.mousePressed(() => {
-    myArm.zeroUpper();
-  });
-
-  const zeroFore = createButton("zero Fore");
-  zeroFore.mousePressed(() => {
-    myArm.zeroFore();
-  });
-
-  const recordBtn = createButton("record");
-  const replayBtn = createButton("replay");
-
-  recordBtn.mousePressed(startRecord);
-  replayBtn.mousePressed(startReplay);
+  myDom.getRecordBtn().mousePressed(startRecord);
+  myDom.getReplayBtn().mousePressed(startReplay);
 }
 
 async function draw() {

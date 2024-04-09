@@ -15,12 +15,9 @@ class Dom {
     this.zeroUpperBtn.mousePressed(this.zeroUpper.bind(this));
     this.connectForeBtn.mousePressed(this.connectFore.bind(this));
     this.zeroForeBtn.mousePressed(this.zeroFore.bind(this));
-    this.recordBtn.mousePressed(this.record.bind(this));
-    this.replayBtn.mousePressed(this.replay.bind(this));
   }
 
   async connectUpper() {
-    // TEST ME!!!
     if (!this.upperBluetoothManager.isConnected()) {
       await this.upperBluetoothManager.scanDevices();
     } else {
@@ -35,11 +32,10 @@ class Dom {
   }
 
   zeroUpper() {
-    console.log("zero upper");
+    this.myArm.zeroUpper();
   }
 
   async connectFore() {
-    // TEST ME!!
     this.foreBluetoothManager.test();
     if (!this.foreBluetoothManager.isConnected()) {
       await this.foreBluetoothManager.scanDevices();
@@ -55,14 +51,14 @@ class Dom {
   }
 
   zeroFore() {
-    console.log("zero fore");
+    this.myArm.zeroFore();
   }
 
-  record() {
-    console.log("record");
+  getRecordBtn() {
+    return this.recordBtn;
   }
 
-  replay() {
-    console.log("replay");
+  getReplayBtn() {
+    return this.replayBtn;
   }
 }
