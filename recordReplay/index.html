@@ -1,5 +1,8 @@
 <html>
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
     <script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.js"></script>
     <script src="constants.js"></script>
     <script src="dummyData/data.js"></script>
@@ -9,18 +12,27 @@
     <script src="sketch.js"></script>
   </head>
   <body>
-    <main>
-      <h1 id="header">Record Swing</h1>
+
+    <nav>
+      <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../techniques.html">Swing Techniques</a></li>
+          <li><a href="../practice.html">Practice Drills</a></li>
+      </ul>
+    </nav>
+
+    <section>
+      <h2 id="header">Record Swing</h2>
       <div>
-        <button id="connect_upper_btn">Connect Upperarm</button>
-        <button id="zero_upper_btn">Zero Upperarm</button>
-        <button id="connect_fore_btn">Connect Forearm</button>
-        <button id="zero_fore_btn">Zero Forearm</button>
+        <button id="connect_upper_btn" class="styled-button">Connect Upperarm</button>
+        <button id="zero_upper_btn" class="styled-button">Zero Upperarm</button>
+        <button id="connect_fore_btn" class="styled-button">Connect Forearm</button>
+        <button id="zero_fore_btn" class="styled-button">Zero Forearm</button>
         <div>
-          <button id="record_btn">Record</button>
-          <button id="replay_btn">Replay</button>
+          <button id="record_btn" class="styled-button">Record</button>
+          <button id="replay_btn"class="styled-button">Replay</button>
         </div>
       </div>
-    </main>
+    </section>
   </body>
 </html>
