@@ -5,7 +5,7 @@ body {
     padding: 0;
     background: #f4f4f4;
     color: #333;
-    overflow: hidden; 
+    /* overflow: hidden;  */
     background-image: url('background-image.jpg'); 
     background-size: cover; 
     background-position: center; 
