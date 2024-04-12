@@ -1,4 +1,4 @@
-let DEBUG_MODE = true;
+let DEBUG_MODE = false;
 
 let lastUpdate = 0;
 

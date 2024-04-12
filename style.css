@@ -53,6 +53,26 @@ section h2{
 }
 
 
+.styled-button {
+    color: rgb(158, 13, 119);
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #f610b9;
+    border: 1px solid #f610b9;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    display: inline-block; 
+    margin: 10px auto; 
+}
+
+.styled-button:hover {
+    background-color: #f4f4f4;
+    color: #f610b9;
+}
+
+
+
 /* .tennis-ball-rain {
     position: fixed;
     top: 0;
