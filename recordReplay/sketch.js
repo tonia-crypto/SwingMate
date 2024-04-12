@@ -1,15 +1,9 @@
-const boxHeight = 150;
-const boxWidth = 30;
-const jointRadius = 30;
-
 let lastUpdate = 0;
-const updateInterval = 100; // milliseconds
 
 let record = false;
 let replay = false;
 let recordedData = [];
 
-const NUM_FRAMES_RECORD = 50;
 let recordCounter = NUM_FRAMES_RECORD;
 let replayCounter = 0;
 
@@ -75,7 +69,7 @@ async function draw() {
     if (
       (upperarmBluetoothManager.connected ||
         forearmBluetoothManager.connected) &&
-      deltaTime >= updateInterval
+      deltaTime >= UPDATE_INTERVAL
     ) {
       lastUpdate = now;
 
