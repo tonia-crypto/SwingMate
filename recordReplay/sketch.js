@@ -1,15 +1,11 @@
-const boxHeight = 150;
-const boxWidth = 30;
-const jointRadius = 30;
+let DEBUG_MODE = true;
 
 let lastUpdate = 0;
-const updateInterval = 100; // milliseconds
 
 let record = false;
 let replay = false;
 let recordedData = [];
 
-const NUM_FRAMES_RECORD = 50;
 let recordCounter = NUM_FRAMES_RECORD;
 let replayCounter = 0;
 
@@ -43,9 +39,14 @@ function setup() {
   frameRate(10);
 
   myDom = new Dom(upperarmBluetoothManager, forearmBluetoothManager, myArm);
+  myDom.setDebugMode(DEBUG_MODE);
 
   myDom.getRecordBtn().mousePressed(startRecord);
   myDom.getReplayBtn().mousePressed(startReplay);
+
+  if (DEBUG_MODE) {
+    recordedData = dummyData;
+  }
 }
 
 async function draw() {
@@ -66,7 +67,7 @@ async function draw() {
     console.log(foreCoord);
 
     replayCounter++;
-  } else {
+  } else if (!DEBUG_MODE) {
     // -------------- LIVE FEED ----------------------
     const now = millis();
     const deltaTime = now - lastUpdate;
@@ -75,7 +76,7 @@ async function draw() {
     if (
       (upperarmBluetoothManager.connected ||
         forearmBluetoothManager.connected) &&
-      deltaTime >= updateInterval
+      deltaTime >= UPDATE_INTERVAL
     ) {
       lastUpdate = now;
 
