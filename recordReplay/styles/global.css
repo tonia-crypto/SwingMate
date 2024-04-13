@@ -39,7 +39,11 @@ canvas {
   transform: translateX(-90%);
 }
 
-#live_container {
+#live-icon {
+  position: absolute;
+  transform: translateX(425%);
+  margin: 20px 0;
+  width: 50px;
 }
 
 .primary_btn {
