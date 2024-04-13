@@ -7,9 +7,8 @@ const FOREARM_CHIP_NAME = "FOREARM_CHIP";
 // id names
 const ID_TAGS = {
   CONNECT_UPPER_BTN: "#connect_upper_btn",
-  ZERO_UPPER_BTN: "#zero_upper_btn",
   CONNECT_FORE_BTN: "#connect_fore_btn",
-  ZERO_FORE_BTN: "#zero_fore_btn",
+  ZERO_BTN: "#zero_btn",
   RECORD_BTN: "#record_btn",
   REPLAY_BTN: "#replay_btn",
   HEADER: "#header",
