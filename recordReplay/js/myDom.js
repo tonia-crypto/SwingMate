@@ -132,19 +132,16 @@ class Dom {
   setSetupScreen() {
     this.modelScreen.hide();
     this.setupScreen.style("display: flex");
-
-    // FIXME
-    this.setModelScreen();
   }
 
   setModelScreen() {
-    // this.setupScreen.style("display: none"); // FIXME
+    this.setupScreen.style("display: none");
     this.modelScreen.show();
-    // this.canvas.style("border: 1px solid black");
   }
 
   setRecordMode() {
     this.recordBtn.html("STOP");
+    this.recordBtn.class(CLASS_TAGS.PRIMARY_BTN);
     this.liveIcon.show();
     this.myArm.setFillColor(MODEL_RED);
     this.sliderContainer.style("display: none");
@@ -152,6 +149,7 @@ class Dom {
 
   setPlayMode() {
     this.recordBtn.html("Rerecord");
+    this.recordBtn.class(CLASS_TAGS.SECONDARY_BTN);
     this.liveIcon.hide();
     this.zeroBtn.hide();
     this.myArm.setFillColor(MODEL_PURPLE);

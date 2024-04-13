@@ -22,6 +22,11 @@ const ID_TAGS = {
   SLIDER_CONTAINER: "#slider_container",
 };
 
+const CLASS_TAGS = {
+  PRIMARY_BTN: "primary_btn",
+  SECONDARY_BTN: "secondary_btn",
+};
+
 const SCREENS = {
   SETUP: 1,
   MODEL: 2,
