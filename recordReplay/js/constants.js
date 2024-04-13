@@ -15,6 +15,15 @@ const ID_TAGS = {
   PLAY_ICON: "#playIcon",
   STOP_ICON: "#stopIcon",
   HEADER: "#header",
+  CANVAS_CONTAINER: "#canvas_container",
+  SETUP_SCREEN: "#setup_screen",
+  MODEL_SCREEN: "#model_screen",
+};
+
+const SCREENS = {
+  SETUP: 1,
+  MODEL: 2,
+  DEBUG: 3,
 };
 
 // sizes

@@ -1,5 +1,6 @@
 const DEBUG_MODE = false;
 
+let setupScreen = false;
 let replayState = false;
 
 let lastUpdate = 0;
@@ -44,7 +45,10 @@ function setup() {
   frameRate(10);
 
   myDom = new Dom(upperarmBluetoothManager, forearmBluetoothManager, myArm);
+  myDom.setSetupScreen();
+
   myDom.setDebugMode(DEBUG_MODE);
+
   myDom.getRecordBtn().mousePressed(startRecord);
 
   if (DEBUG_MODE) {
