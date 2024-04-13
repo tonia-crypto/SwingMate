@@ -6,6 +6,12 @@
       href="https://fonts.googleapis.com/css?family=Manrope"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./style.css" />
     <script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.js"></script>
     <script src="constants.js"></script>
@@ -22,16 +28,20 @@
       <!-- P5.js will inject code in here -->
     </main>
     <section>
-      <button id="connect_upper_btn" class="styled-button">
-        Connect Upperarm
-      </button>
-      <button id="connect_fore_btn" class="styled-button">
-        Connect Forearm
-      </button>
-      <button id="zero_btn" class="styled-button">Set Root Position</button>
+      <div>
+        <button id="connect_upper_btn" class="primary_btn">
+          Connect Upperarm
+        </button>
+        <button id="connect_fore_btn" class="primary_btn">
+          Connect Forearm
+        </button>
+      </div>
+      <div>
+        <button id="zero_btn" class="secondary_btn">Set Root Position</button>
+      </div>
 
-      <button id="record_btn" class="styled-button">Record</button>
-      <button id="replay_btn" class="styled-button">Replay</button>
+      <button id="record_btn" class="primary_btn">RECORD</button>
+      <button id="replay_btn" class="secondary_btn">Replay</button>
     </section>
   </body>
 </html>
