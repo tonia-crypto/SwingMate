@@ -19,13 +19,6 @@ let myDom;
 
 let slider;
 
-function startRecord() {
-  replayState = false;
-  recordCounter = NUM_FRAMES_RECORD;
-  recordedData = [];
-  record = true;
-}
-
 function startReplay() {
   if (record) record = false;
   myArm.resetMovingAverage();
@@ -48,7 +41,7 @@ function setup() {
 
   myDom.setDebugMode(DEBUG_MODE);
 
-  myDom.getRecordBtn().mousePressed(startRecord);
+  myDom.getRecordBtn().mousePressed(onRecordStopBtn);
 
   if (DEBUG_MODE) {
     recordedData = dummyData;
@@ -56,7 +49,6 @@ function setup() {
 }
 
 async function draw() {
-  orbitControl();
   ambientLight(150);
   pointLight(200, 200, 200, 100, 100, 100);
 

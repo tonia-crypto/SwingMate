@@ -4,7 +4,7 @@ function onFinishRecording() {
 
   // initialize slider
   if (slider == null) {
-    slider = new Slider(NUM_FRAMES_RECORD - 1);
+    slider = new Slider(recordedData.length - 1);
     slider.playSlider.addEventListener("playSliderUpdate", () => {
       playIndex = slider.getPlayValueInt();
     });
@@ -12,7 +12,7 @@ function onFinishRecording() {
     myDom.getPlayBtn().mousePressed(() => onPlayBtn());
     myDom.getCropBtn().mousePressed(() => onCropBtn());
   } else {
-    slider.updateMax(NUM_FRAMES_RECORD - 1);
+    slider.updateMax(recordedData.length - 1);
   }
 
   myDom.getRecordBtn().html("Rerecord");
@@ -50,4 +50,16 @@ function onCropBtn() {
   recordData = recordData.slice(from, to + 1);
 
   playIndex = 0;
+}
+
+function onRecordStopBtn() {
+  if (!record) {
+    replayState = false;
+    recordCounter = NUM_FRAMES_RECORD;
+    recordedData = [];
+    myDom.getRecordBtn().html("STOP");
+    record = true;
+  } else {
+    onFinishRecording();
+  }
 }

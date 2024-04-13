@@ -128,11 +128,13 @@ class Dom {
   setSetupScreen() {
     this.modelScreen.hide();
     this.setupScreen.style("display: flex");
+
+    // FIXME
+    this.setModelScreen();
   }
 
   setModelScreen() {
-    console.log("setting model screen");
-    this.setupScreen.style("display: none");
+    // this.setupScreen.style("display: none"); // FIXME
     this.modelScreen.show();
   }
 
