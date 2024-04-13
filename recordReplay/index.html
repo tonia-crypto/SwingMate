@@ -28,9 +28,13 @@
   <body>
     <header id="header">SwingMate</header>
     <section id="setup_screen">
-      <div>Connect to your Sensors Through Bluetooth</div>
-      <button>upperarm</button>
-      <button>forearm</button>
+      <p>Connect to your Sensors Through Bluetooth</p>
+      <button id="connect_upper_btn" class="primary_btn">
+        <div>Upperarm</div>
+      </button>
+      <button id="connect_fore_btn" class="primary_btn">
+        <div>Forearm</div>
+      </button>
     </section>
 
     <section id="model_screen">
@@ -42,15 +46,6 @@
         </main>
       </div>
       <div id="controls">
-        <div>
-          <button id="connect_upper_btn" class="primary_btn">
-            Connect Upperarm
-          </button>
-          <button id="connect_fore_btn" class="primary_btn">
-            Connect Forearm
-          </button>
-        </div>
-
         <button id="record_btn" class="primary_btn">RECORD</button>
 
         <div id="slider_container">

@@ -31,32 +31,29 @@ class Dom {
   }
 
   async connectUpper() {
-    if (!this.upperBluetoothManager.isConnected()) {
-      await this.upperBluetoothManager.scanDevices();
-    } else {
+    this.setBtnToLoading(this.connectUpperBtn);
+
+    // disconnect if connected
+    if (this.upperBluetoothManager.isConnected()) {
       await this.upperBluetoothManager.disconnect();
     }
 
-    if (this.upperBluetoothManager.isConnected()) {
-      this.connectUpperBtn.html("Disconnect Upperarm");
-    } else {
-      this.connectUpperBtn.html("Connect Upperarm");
-    }
+    await this.upperBluetoothManager.scanDevices();
+
+    this.removeBtnFromLoading(this.connectUpperBtn);
   }
 
   async connectFore() {
-    this.foreBluetoothManager.test();
-    if (!this.foreBluetoothManager.isConnected()) {
-      await this.foreBluetoothManager.scanDevices();
-    } else {
+    this.setBtnToLoading(this.connectForeBtn);
+
+    // disconnect if connected
+    if (this.foreBluetoothManager.isConnected()) {
       await this.foreBluetoothManager.disconnect();
     }
 
-    if (this.foreBluetoothManager.isConnected()) {
-      this.connectForeBtn.html("Disconnect Forearm");
-    } else {
-      this.connectForeBtn.html("Connect Forearm");
-    }
+    await this.foreBluetoothManager.scanDevices();
+
+    this.removeBtnFromLoading(this.connectForeBtn);
   }
 
   showCanvas(show) {
@@ -106,11 +103,40 @@ class Dom {
 
   setSetupScreen() {
     this.modelScreen.hide();
-    this.setupScreen.show();
+    this.setupScreen.style("display: flex");
   }
 
   setModelScreen() {
-    this.setupScreen.hide();
+    this.setupScreen.style("display: flex");
     this.modelScreen.show();
+  }
+
+  /**
+   *
+   * Puts btn into loading state
+   * @param {p5.Element} btn
+   */
+  setBtnToLoading(btn) {
+    let loadingElement = document.createElement("img");
+    loadingElement.classList.add("loading_icon");
+    loadingElement.src = "icons/circle-notch.svg";
+    btn.elt.appendChild(loadingElement);
+
+    btn.addClass("loading_btn");
+  }
+
+  /**
+   *
+   * Removes btn into loading state
+   * @param {p5.Element} btn
+   */
+  removeBtnFromLoading(btn) {
+    let loadingElement = btn.elt.querySelector(".loading_icon");
+
+    if (loadingElement) {
+      loadingElement.remove();
+    }
+
+    btn.removeClass("loading_btn");
   }
 }

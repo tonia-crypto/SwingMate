@@ -45,7 +45,6 @@ function setup() {
   frameRate(10);
 
   myDom = new Dom(upperarmBluetoothManager, forearmBluetoothManager, myArm);
-  myDom.setSetupScreen();
 
   myDom.setDebugMode(DEBUG_MODE);
 

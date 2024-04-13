@@ -1,0 +1,13 @@
+#setup_screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: calc(100% - 81px); /* 81 is height of header */
+}
+
+#connect_upper_btn,
+#connect_fore_btn,
+#loading {
+  width: 150px;
+}
