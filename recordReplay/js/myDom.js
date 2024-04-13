@@ -147,6 +147,7 @@ class Dom {
     this.recordBtn.html("STOP");
     this.liveIcon.show();
     this.myArm.setFillColor(MODEL_RED);
+    this.sliderContainer.style("display: none");
   }
 
   setPlayMode() {
@@ -154,6 +155,7 @@ class Dom {
     this.liveIcon.hide();
     this.zeroBtn.hide();
     this.myArm.setFillColor(MODEL_PURPLE);
+    this.sliderContainer.style("display: flex");
   }
 
   /**

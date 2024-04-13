@@ -48,6 +48,10 @@ class Slider {
     const fromPosition = this.fromSlider.value - this.toSlider.min;
     const toPosition = this.toSlider.value - this.toSlider.min;
 
+    if (fromPosition >= toPosition) {
+      return;
+    }
+
     // percentages
     const startRangeColor = (fromPosition / rangeDistance) * 100;
     const endRangeColor = (toPosition / rangeDistance) * 100; // - circleActivePercentage
@@ -70,8 +74,8 @@ class Slider {
     let fromVal = this.getFromValueInt();
     let toVal = this.getToValueInt();
 
-    if (fromVal > toVal) {
-      this.fromSlider.value = toVal;
+    if (fromVal >= toVal) {
+      this.fromSlider.value = toVal - 1;
     }
     this.playSlider.value = fromSlider.value;
     this.broadcastPlaySliderUpdate();
@@ -83,8 +87,8 @@ class Slider {
     let fromVal = this.getFromValueInt();
     let toVal = this.getToValueInt();
 
-    if (fromVal > toVal) {
-      this.toSlider.value = fromVal;
+    if (toVal <= fromVal) {
+      this.toSlider.value = fromVal + 1;
     }
 
     this.playSlider.value = toSlider.value;

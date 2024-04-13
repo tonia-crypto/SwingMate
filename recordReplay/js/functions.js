@@ -44,10 +44,11 @@ function onCropBtn() {
   let from = slider.getFromValueInt();
   let to = slider.getToValueInt();
   let newRangeDist = to - from;
+  console.log(newRangeDist);
 
-  slider.updateMax(newRangeDist - 1);
+  slider.updateMax(newRangeDist);
 
-  recordData = recordData.slice(from, to + 1);
+  recordedData = recordedData.slice(from, to + 1);
 
   playIndex = 0;
 }
