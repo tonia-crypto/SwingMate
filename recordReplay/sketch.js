@@ -14,6 +14,8 @@ let forearmBluetoothManager;
 let myArm;
 let myDom;
 
+let slider;
+
 function startRecord() {
   recordCounter = NUM_FRAMES_RECORD;
   recordedData = [];
@@ -47,6 +49,8 @@ function setup() {
   if (DEBUG_MODE) {
     recordedData = dummyData;
   }
+
+  slider = new Slider(100);
 }
 
 async function draw() {

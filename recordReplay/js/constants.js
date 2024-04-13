@@ -28,4 +28,6 @@ const NUM_FRAMES_RECORD = 50;
 
 // colors
 const LIGHT_PINK = "#FFEDF4";
+const DARK_PURPLE = "#4C0F89";
 const OFF_PURPLE = "#6260C7";
+const GREY = "#BEBEBE";
