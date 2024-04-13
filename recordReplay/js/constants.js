@@ -10,7 +10,10 @@ const ID_TAGS = {
   CONNECT_FORE_BTN: "#connect_fore_btn",
   ZERO_BTN: "#zero_btn",
   RECORD_BTN: "#record_btn",
-  REPLAY_BTN: "#replay_btn",
+  PLAY_BTN: "#playBtn",
+  CROP_BTN: "#cropBtn",
+  PLAY_ICON: "#playIcon",
+  STOP_ICON: "#stopIcon",
   HEADER: "#header",
 };
 

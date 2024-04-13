@@ -1,5 +1,5 @@
 #slider_container {
-  display: flex;
+  display: none;
   flex-direction: row;
   align-items: center;
   margin: 25px 20px;

@@ -28,8 +28,6 @@ class Slider {
   }
 
   unhide() {
-    console.log("unhidding");
-    console.log(this.sliderContainer);
     this.sliderContainer.style.display = "flex";
   }
 

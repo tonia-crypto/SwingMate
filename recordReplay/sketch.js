@@ -1,13 +1,15 @@
 const DEBUG_MODE = false;
 
+let replayState = false;
+
 let lastUpdate = 0;
 
 let record = false;
-let replay = false;
+let play = false;
+let playIndex = 0;
 let recordedData = [];
 
 let recordCounter = NUM_FRAMES_RECORD;
-let replayCounter = 0;
 
 let upperarmBluetoothManager;
 let forearmBluetoothManager;
@@ -25,8 +27,8 @@ function startRecord() {
 function startReplay() {
   if (record) record = false;
   myArm.resetMovingAverage();
-  replayCounter = 0;
-  replay = true;
+  playIndex = 0;
+  play = true;
 }
 
 function setup() {
@@ -44,13 +46,10 @@ function setup() {
   myDom.setDebugMode(DEBUG_MODE);
 
   myDom.getRecordBtn().mousePressed(startRecord);
-  myDom.getReplayBtn().mousePressed(startReplay);
 
   if (DEBUG_MODE) {
     recordedData = dummyData;
   }
-
-  slider = new Slider(100);
 }
 
 async function draw() {
@@ -58,23 +57,26 @@ async function draw() {
   ambientLight(150);
   pointLight(200, 200, 200, 100, 100, 100);
 
-  if (replay) {
+  if (replayState) {
     // -------------- REPLAY -------------------------
-    if (replayCounter >= recordedData.length) {
-      replay = false;
-      return;
-    }
-
-    let upperCoord = recordedData[replayCounter][0];
-    let foreCoord = recordedData[replayCounter][1];
+    let upperCoord = recordedData[playIndex][0];
+    let foreCoord = recordedData[playIndex][1];
 
     myArm.updateUpperRotation(upperCoord);
     myArm.updateForeRotation(foreCoord);
 
-    console.log(upperCoord);
-    console.log(foreCoord);
+    if (play) {
+      // update play index
+      playIndex++;
+      slider.setPlaySlider(playIndex);
 
-    replayCounter++;
+      // if at the end
+      if (playIndex >= slider.getToValueInt()) {
+        play = false;
+
+        myDom.togglePlayIcon();
+      }
+    }
   } else if (!DEBUG_MODE) {
     // -------------- LIVE FEED ----------------------
     const now = millis();
@@ -101,18 +103,18 @@ async function draw() {
   }
 
   // background(250);
-  if (record && replay) {
+  if (record && play) {
     background("#54040b"); // maroon
   } else if (record) {
     background("#f2a5a5"); // redish
-  } else if (replay && false) {
+  } else if (play) {
     background("#c8a5f2"); // lilac
   } else {
     background(LIGHT_PINK);
   }
 
   // normalMaterial();
-  myArm.draw(replay);
+  myArm.draw(play);
 
   // recording data
   if (record) {
@@ -121,7 +123,7 @@ async function draw() {
     recordCounter--;
 
     if (recordCounter <= 0) {
-      record = false;
+      onFinishRecording();
     }
   }
 }

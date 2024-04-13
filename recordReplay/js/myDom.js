@@ -10,7 +10,12 @@ class Dom {
     this.connectForeBtn = select(ID_TAGS.CONNECT_FORE_BTN);
     this.zeroBtn = select(ID_TAGS.ZERO_BTN);
     this.recordBtn = select(ID_TAGS.RECORD_BTN);
-    this.replayBtn = select(ID_TAGS.REPLAY_BTN);
+    this.playBtn = select(ID_TAGS.PLAY_BTN);
+
+    this.playIcon = select(ID_TAGS.PLAY_ICON);
+    this.stopIcon = select(ID_TAGS.STOP_ICON);
+
+    this.isPlayIcon = true;
 
     this.connectUpperBtn.mousePressed(this.connectUpper.bind(this));
     this.connectForeBtn.mousePressed(this.connectFore.bind(this));
@@ -51,12 +56,22 @@ class Dom {
     this.myArm.zeroUpper();
   }
 
-  getRecordBtn() {
-    return this.recordBtn;
+  togglePlayIcon() {
+    this.playIcon.show();
+    this.stopIcon.hide();
   }
 
-  getReplayBtn() {
-    return this.replayBtn;
+  toggleStopIcon() {
+    this.playIcon.hide();
+    this.stopIcon.show();
+  }
+
+  getPlayBtn() {
+    return this.playBtn;
+  }
+
+  getRecordBtn() {
+    return this.recordBtn;
   }
 
   setDebugMode(debugMode) {
