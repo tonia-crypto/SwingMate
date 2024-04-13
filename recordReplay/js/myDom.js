@@ -45,6 +45,14 @@ class Dom {
     if (this.upperBluetoothManager.isConnected()) {
       this.replaceBtnWithCheckmark(this.connectUpperBtn);
     }
+
+    // go to next screen if both connected
+    if (
+      this.foreBluetoothManager.isConnected() &&
+      this.upperBluetoothManager.isConnected()
+    ) {
+      this.setModelScreen();
+    }
   }
 
   async connectFore() {
@@ -61,6 +69,14 @@ class Dom {
 
     if (this.foreBluetoothManager.isConnected()) {
       this.replaceBtnWithCheckmark(this.connectForeBtn);
+    }
+
+    // go to next screen if both connected
+    if (
+      this.foreBluetoothManager.isConnected() &&
+      this.upperBluetoothManager.isConnected()
+    ) {
+      this.setModelScreen();
     }
   }
 
@@ -115,7 +131,8 @@ class Dom {
   }
 
   setModelScreen() {
-    this.setupScreen.style("display: flex");
+    console.log("setting model screen");
+    this.setupScreen.style("display: none");
     this.modelScreen.show();
   }
 
