@@ -7,16 +7,20 @@ class Dom {
     this.header = select(ID_TAGS.HEADER);
 
     this.connectUpperBtn = select(ID_TAGS.CONNECT_UPPER_BTN);
-    this.zeroUpperBtn = select(ID_TAGS.ZERO_UPPER_BTN);
     this.connectForeBtn = select(ID_TAGS.CONNECT_FORE_BTN);
-    this.zeroForeBtn = select(ID_TAGS.ZERO_FORE_BTN);
+    this.zeroBtn = select(ID_TAGS.ZERO_BTN);
     this.recordBtn = select(ID_TAGS.RECORD_BTN);
-    this.replayBtn = select(ID_TAGS.REPLAY_BTN);
+    this.playBtn = select(ID_TAGS.PLAY_BTN);
+    this.cropBtn = select(ID_TAGS.CROP_BTN);
+
+    this.playIcon = select(ID_TAGS.PLAY_ICON);
+    this.stopIcon = select(ID_TAGS.STOP_ICON);
+
+    this.isPlayIcon = true;
 
     this.connectUpperBtn.mousePressed(this.connectUpper.bind(this));
-    this.zeroUpperBtn.mousePressed(this.zeroUpper.bind(this));
     this.connectForeBtn.mousePressed(this.connectFore.bind(this));
-    this.zeroForeBtn.mousePressed(this.zeroFore.bind(this));
+    this.zeroBtn.mousePressed(this.zero.bind(this));
   }
 
   async connectUpper() {
@@ -31,10 +35,6 @@ class Dom {
     } else {
       this.connectUpperBtn.html("Connect Upperarm");
     }
-  }
-
-  zeroUpper() {
-    this.myArm.zeroUpper();
   }
 
   async connectFore() {
@@ -52,24 +52,38 @@ class Dom {
     }
   }
 
-  zeroFore() {
+  zero() {
     this.myArm.zeroFore();
+    this.myArm.zeroUpper();
+  }
+
+  togglePlayIcon() {
+    this.playIcon.show();
+    this.stopIcon.hide();
+  }
+
+  toggleStopIcon() {
+    this.playIcon.hide();
+    this.stopIcon.show();
+  }
+
+  getPlayBtn() {
+    return this.playBtn;
+  }
+
+  getCropBtn() {
+    return this.cropBtn;
   }
 
   getRecordBtn() {
     return this.recordBtn;
   }
 
-  getReplayBtn() {
-    return this.replayBtn;
-  }
-
   setDebugMode(debugMode) {
     if (debugMode) {
       this.header.html("Debug Mode");
       this.connectUpperBtn.hide();
-      this.zeroUpperBtn.hide();
-      this.zeroForeBtn.hide();
+      this.zeroBtn.hide();
       this.connectForeBtn.hide();
       this.recordBtn.hide();
     }

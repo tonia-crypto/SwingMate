@@ -7,18 +7,30 @@ const FOREARM_CHIP_NAME = "FOREARM_CHIP";
 // id names
 const ID_TAGS = {
   CONNECT_UPPER_BTN: "#connect_upper_btn",
-  ZERO_UPPER_BTN: "#zero_upper_btn",
   CONNECT_FORE_BTN: "#connect_fore_btn",
-  ZERO_FORE_BTN: "#zero_fore_btn",
+  ZERO_BTN: "#zero_btn",
   RECORD_BTN: "#record_btn",
-  REPLAY_BTN: "#replay_btn",
+  PLAY_BTN: "#playBtn",
+  CROP_BTN: "#cropBtn",
+  PLAY_ICON: "#playIcon",
+  STOP_ICON: "#stopIcon",
   HEADER: "#header",
 };
 
-// drawing arm
-const BOX_HEIGHT = 150;
-const BOX_WIDTH = 30;
-const JOINT_RADIUS = 30;
+// sizes
+const CANVAS_WIDTH = 500;
+const CANVAS_HEIGHT = 500;
+const BOX_HEIGHT = 80;
+const BOX_WIDTH = 15;
+const BOX_DEPTH = BOX_WIDTH;
+const JOINT_RADIUS = 15;
 
+// recording + replaying
 const UPDATE_INTERVAL = 100; // milliseconds
 const NUM_FRAMES_RECORD = 50;
+
+// colors
+const LIGHT_PINK = "#FFEDF4";
+const DARK_PURPLE = "#4C0F89";
+const OFF_PURPLE = "#6260C7";
+const GREY = "#BEBEBE";

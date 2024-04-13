@@ -1,20 +1,25 @@
-let DEBUG_MODE = false;
+const DEBUG_MODE = false;
+
+let replayState = false;
 
 let lastUpdate = 0;
 
 let record = false;
-let replay = false;
+let play = false;
+let playIndex = 0;
 let recordedData = [];
 
 let recordCounter = NUM_FRAMES_RECORD;
-let replayCounter = 0;
 
 let upperarmBluetoothManager;
 let forearmBluetoothManager;
 let myArm;
 let myDom;
 
+let slider;
+
 function startRecord() {
+  replayState = false;
   recordCounter = NUM_FRAMES_RECORD;
   recordedData = [];
   record = true;
@@ -23,8 +28,8 @@ function startRecord() {
 function startReplay() {
   if (record) record = false;
   myArm.resetMovingAverage();
-  replayCounter = 0;
-  replay = true;
+  playIndex = 0;
+  play = true;
 }
 
 function setup() {
@@ -33,16 +38,14 @@ function setup() {
 
   myArm = new Arm();
 
-  createCanvas(710, 600, WEBGL);
+  createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT, WEBGL);
   angleMode(DEGREES);
 
   frameRate(10);
 
   myDom = new Dom(upperarmBluetoothManager, forearmBluetoothManager, myArm);
   myDom.setDebugMode(DEBUG_MODE);
-
   myDom.getRecordBtn().mousePressed(startRecord);
-  myDom.getReplayBtn().mousePressed(startReplay);
 
   if (DEBUG_MODE) {
     recordedData = dummyData;
@@ -50,23 +53,30 @@ function setup() {
 }
 
 async function draw() {
-  if (replay) {
-    // -------------- REPLAY -------------------------
-    if (replayCounter >= recordedData.length) {
-      replay = false;
-      return;
-    }
+  orbitControl();
+  ambientLight(150);
+  pointLight(200, 200, 200, 100, 100, 100);
 
-    let upperCoord = recordedData[replayCounter][0];
-    let foreCoord = recordedData[replayCounter][1];
+  if (replayState) {
+    // -------------- REPLAY -------------------------
+    let upperCoord = recordedData[playIndex][0];
+    let foreCoord = recordedData[playIndex][1];
 
     myArm.updateUpperRotation(upperCoord);
     myArm.updateForeRotation(foreCoord);
 
-    console.log(upperCoord);
-    console.log(foreCoord);
+    if (play) {
+      // update play index
+      playIndex++;
+      slider.setPlaySlider(playIndex);
 
-    replayCounter++;
+      // if at the end
+      if (playIndex >= slider.getToValueInt()) {
+        play = false;
+
+        myDom.togglePlayIcon();
+      }
+    }
   } else if (!DEBUG_MODE) {
     // -------------- LIVE FEED ----------------------
     const now = millis();
@@ -93,18 +103,18 @@ async function draw() {
   }
 
   // background(250);
-  if (record && replay) {
+  if (record && play) {
     background("#54040b"); // maroon
   } else if (record) {
     background("#f2a5a5"); // redish
-  } else if (replay) {
+  } else if (play) {
     background("#c8a5f2"); // lilac
   } else {
-    background(250); // white
+    background(LIGHT_PINK);
   }
 
-  normalMaterial();
-  myArm.draw(replay);
+  // normalMaterial();
+  myArm.draw(play);
 
   // recording data
   if (record) {
@@ -113,7 +123,7 @@ async function draw() {
     recordCounter--;
 
     if (recordCounter <= 0) {
-      record = false;
+      onFinishRecording();
     }
   }
 }

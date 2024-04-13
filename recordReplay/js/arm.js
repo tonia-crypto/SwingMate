@@ -90,27 +90,28 @@ class Arm {
     }
 
     push();
+    fill(OFF_PURPLE);
     rotateX(myUpper.y);
     rotateY(myUpper.x);
     rotateZ(myUpper.z);
 
     translate(0, (-1 * BOX_HEIGHT) / 2, 0);
-    sphere(JOINT_RADIUS);
+    sphere(JOINT_RADIUS, 32, 32);
     translate(0, BOX_HEIGHT / 2, 0);
 
-    box(BOX_WIDTH, BOX_HEIGHT, 30);
+    box(BOX_WIDTH, BOX_HEIGHT, BOX_DEPTH, 32, 32);
 
     translate(0, BOX_HEIGHT / 2, 0);
-    sphere(JOINT_RADIUS);
+    sphere(JOINT_RADIUS, 32, 32);
 
     rotateX(myFore.y);
     rotateY(myFore.x);
     rotateZ(myFore.z);
 
-    box(BOX_WIDTH, BOX_HEIGHT * 2, 30);
+    box(BOX_WIDTH, BOX_HEIGHT * 2, BOX_DEPTH, 32, 32);
 
     translate(0, BOX_HEIGHT, 0);
-    sphere(JOINT_RADIUS);
+    sphere(JOINT_RADIUS, 32, 32);
 
     pop();
   }

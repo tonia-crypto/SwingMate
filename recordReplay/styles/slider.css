@@ -1,0 +1,112 @@
+#slider_container {
+  display: none;
+  flex-direction: row;
+  align-items: center;
+  margin: 25px 20px;
+  width: 700px;
+  background-color: var(--white);
+  border-radius: 10px;
+}
+
+#range_container {
+  width: 100%;
+}
+
+.slider_btn {
+  width: 36px;
+  height: 32px;
+  margin: 0 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--white);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.btn_icon {
+  height: 15px;
+}
+
+#stopIcon {
+  display: none;
+}
+
+.sliders_control {
+  position: relative;
+  min-height: 50px;
+}
+
+.form_control {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  font-size: 24px;
+  color: var(--grey);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  pointer-events: all;
+  width: 12px;
+  height: 28px;
+  background-color: var(--pink);
+  box-shadow: inset 0 0 0 2px var(--dark-pink);
+  cursor: pointer;
+}
+
+#fromSlider::-webkit-slider-thumb {
+  position: relative;
+  right: 12px;
+}
+
+#toSlider::-webkit-slider-thumb {
+  position: relative;
+  left: 12px;
+}
+
+#playSlider::-webkit-slider-thumb {
+  border-radius: 0%;
+  width: 5px;
+  height: 24px;
+  background-color: var(--dark-purple);
+  box-shadow: none;
+}
+
+input[type="range"]::-moz-range-thumb {
+  pointer-events: all;
+  width: 24px;
+  height: 24px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px #c6c6c6;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  background: #f7f7f7;
+}
+
+input[type="range"]::-webkit-slider-thumb:active {
+  box-shadow: inset 0 0 3px #387bbe, 0 0 9px #387bbe;
+  -webkit-box-shadow: inset 0 0 3px #387bbe, 0 0 9px #387bbe;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 2px;
+  top: 22px;
+  width: 100%;
+  position: absolute;
+  pointer-events: none;
+  background-color: var(--grey);
+}
+
+#fromSlider,
+#toSlider {
+  height: 0;
+  z-index: 1;
+}

@@ -1,0 +1,90 @@
+:root {
+  --white: #fff5f9;
+  --pink: #ffd0e3;
+  --dark-pink: #b23e76;
+  --dark-purple: #4c0f89;
+  --grey: #bebebe;
+}
+
+body {
+  background-color: var(--pink);
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: var(--dark-purple);
+  color: var(--white);
+  text-align: center;
+  padding: 16px 0;
+  font-family: "Manrope", "Courier New", Courier, monospace;
+  font-size: 36px;
+  font-weight: 800;
+}
+
+/* Canvas Container */
+main {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+canvas {
+  border-radius: 14px;
+}
+
+#zero_btn {
+  position: absolute;
+  transform: translateX(-90%);
+}
+
+#live-icon {
+  position: absolute;
+  transform: translateX(425%);
+  margin: 20px 0;
+  width: 50px;
+}
+
+.primary_btn {
+  background-color: var(--dark-pink);
+  border: none;
+  color: var(--white);
+  margin: 4px 0px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-family: "Inter";
+  font-weight: 600;
+  font-size: 16px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.secondary_btn {
+  border: none;
+  margin: 20px 0;
+  border: 2px solid var(--dark-pink);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-family: "Inter";
+  font-weight: 600;
+  font-size: 16px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  cursor: pointer;
+  color: var(--dark-pink);
+}
+
+button {
+  transition: box-shadow 0.3s ease;
+}
+
+button:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#controls {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
