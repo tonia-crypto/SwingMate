@@ -41,6 +41,10 @@ class Dom {
     await this.upperBluetoothManager.scanDevices();
 
     this.removeBtnFromLoading(this.connectUpperBtn);
+
+    if (this.upperBluetoothManager.isConnected()) {
+      this.replaceBtnWithCheckmark(this.connectUpperBtn);
+    }
   }
 
   async connectFore() {
@@ -54,6 +58,10 @@ class Dom {
     await this.foreBluetoothManager.scanDevices();
 
     this.removeBtnFromLoading(this.connectForeBtn);
+
+    if (this.foreBluetoothManager.isConnected()) {
+      this.replaceBtnWithCheckmark(this.connectForeBtn);
+    }
   }
 
   showCanvas(show) {
@@ -138,5 +146,20 @@ class Dom {
     }
 
     btn.removeClass("loading_btn");
+  }
+
+  replaceBtnWithCheckmark(btn) {
+    const divElement = document.createElement("div");
+    divElement.classList.add("checkmark");
+
+    // Create an image element inside the div
+    const imgElement = document.createElement("img");
+    imgElement.classList.add("checkmark-icon");
+    imgElement.src = "icons/check.svg";
+
+    // Append the image element to the div
+    divElement.appendChild(imgElement);
+
+    btn.elt.parentNode.replaceChild(divElement, btn.elt);
   }
 }

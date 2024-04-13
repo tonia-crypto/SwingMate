@@ -2,6 +2,7 @@
   --white: #fff5f9;
   --pink: #ffd0e3;
   --dark-pink: #b23e76;
+  --off-purple: #6260c7;
   --dark-purple: #4c0f89;
   --grey: #bebebe;
 }
@@ -64,7 +65,6 @@ canvas {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   transition: box-shadow 0.3s ease;
   cursor: pointer;
-  transition: margin 0.5s ease;
 }
 
 .secondary_btn {

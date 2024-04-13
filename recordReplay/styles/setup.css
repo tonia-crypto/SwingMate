@@ -11,3 +11,11 @@
 #loading {
   width: 150px;
 }
+
+.checkmark {
+  width: 20px;
+  background-color: var(--off-purple);
+  padding: 8px;
+  border-radius: 50%;
+  margin: 4px;
+}
