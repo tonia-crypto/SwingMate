@@ -89,7 +89,12 @@ class Arm {
       myFore = this.foreRotation;
     }
 
+    ambientLight(150);
+    pointLight(200, 200, 200, 100, 100, 100);
+
     push();
+    // ambientMaterial(OFF_PURPLE);
+    fill(OFF_PURPLE);
     rotateX(myUpper.y);
     rotateY(myUpper.x);
     rotateZ(myUpper.z);

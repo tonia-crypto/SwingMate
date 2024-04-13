@@ -23,12 +23,10 @@ const BOX_WIDTH = 15;
 const BOX_DEPTH = BOX_WIDTH;
 const JOINT_RADIUS = 15;
 
-let totalLength = BOX_HEIGHT * 2 + JOINT_RADIUS * 3 * 2;
-console.log(totalLength);
-
 // recording + replaying
 const UPDATE_INTERVAL = 100; // milliseconds
 const NUM_FRAMES_RECORD = 50;
 
 // colors
 const LIGHT_PINK = "#FFEDF4";
+const OFF_PURPLE = "#6260C7";

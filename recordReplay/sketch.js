@@ -1,4 +1,4 @@
-const DEBUG_MODE = false;
+const DEBUG_MODE = true;
 
 let lastUpdate = 0;
 
@@ -36,7 +36,7 @@ function setup() {
   createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT, WEBGL);
   angleMode(DEGREES);
 
-  //frameRate(10);
+  frameRate(10);
 
   myDom = new Dom(upperarmBluetoothManager, forearmBluetoothManager, myArm);
   myDom.setDebugMode(DEBUG_MODE);
@@ -99,7 +99,7 @@ async function draw() {
     background("#54040b"); // maroon
   } else if (record) {
     background("#f2a5a5"); // redish
-  } else if (replay) {
+  } else if (replay && false) {
     background("#c8a5f2"); // lilac
   } else {
     background(LIGHT_PINK);
