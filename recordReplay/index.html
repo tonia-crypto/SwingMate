@@ -1,8 +1,12 @@
 <html>
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Manrope"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
     <script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.js"></script>
     <script src="constants.js"></script>
     <script src="dummyData/data.js"></script>
@@ -12,43 +16,20 @@
     <script src="sketch.js"></script>
   </head>
   <body>
-
-    <nav>
-      <ul>
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="../techniques.html">Swing Techniques</a></li>
-          <li><a href="../practice.html">Practice Drills</a></li>
-      </ul>
-    </nav>
+    <header id="header">Compare Your Swing</header>
 
     <section>
-      <h2 id="header">Record Swing</h2>
-      <nav>
-        <ul>
-          <li>
-            <button id="connect_upper_btn" class="styled-button">Connect Upperarm</button>
-          </li>
-          <li>
-            <button id="zero_upper_btn" class="styled-button">Zero Upperarm</button>
+      <button id="connect_upper_btn" class="styled-button">
+        Connect Upperarm
+      </button>
+      <button id="zero_upper_btn" class="styled-button">Zero Upperarm</button>
+      <button id="connect_fore_btn" class="styled-button">
+        Connect Forearm
+      </button>
+      <button id="zero_fore_btn" class="styled-button">Zero Forearm</button>
 
-          </li>
-          <li>
-            <button id="connect_fore_btn" class="styled-button">Connect Forearm</button>
-
-          </li>
-          <li>
-            <button id="zero_fore_btn" class="styled-button">Zero Forearm</button>
-
-          </li>
-        </ul>
-
-        <nav>
-          <ul>
-            <li><button id="record_btn" class="styled-button">Record</button></li>
-            <li><button id="replay_btn"class="styled-button">Replay</button></li>
-          </ul>
-        </nav>
-      </nav>
+      <button id="record_btn" class="styled-button">Record</button>
+      <button id="replay_btn" class="styled-button">Replay</button>
     </section>
   </body>
 </html>

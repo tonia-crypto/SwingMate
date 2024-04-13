@@ -1,4 +1,4 @@
-let DEBUG_MODE = false;
+const DEBUG_MODE = false;
 
 let lastUpdate = 0;
 
@@ -33,10 +33,10 @@ function setup() {
 
   myArm = new Arm();
 
-  createCanvas(710, 600, WEBGL);
+  createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT, WEBGL);
   angleMode(DEGREES);
 
-  frameRate(10);
+  //frameRate(10);
 
   myDom = new Dom(upperarmBluetoothManager, forearmBluetoothManager, myArm);
   myDom.setDebugMode(DEBUG_MODE);
@@ -50,6 +50,8 @@ function setup() {
 }
 
 async function draw() {
+  orbitControl();
+
   if (replay) {
     // -------------- REPLAY -------------------------
     if (replayCounter >= recordedData.length) {
@@ -100,7 +102,7 @@ async function draw() {
   } else if (replay) {
     background("#c8a5f2"); // lilac
   } else {
-    background(250); // white
+    background(LIGHT_PINK);
   }
 
   normalMaterial();

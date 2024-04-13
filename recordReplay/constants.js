@@ -15,10 +15,20 @@ const ID_TAGS = {
   HEADER: "#header",
 };
 
-// drawing arm
-const BOX_HEIGHT = 150;
-const BOX_WIDTH = 30;
-const JOINT_RADIUS = 30;
+// sizes
+const CANVAS_WIDTH = 400;
+const CANVAS_HEIGHT = 400;
+const BOX_HEIGHT = 80;
+const BOX_WIDTH = 15;
+const BOX_DEPTH = BOX_WIDTH;
+const JOINT_RADIUS = 15;
 
+let totalLength = BOX_HEIGHT * 2 + JOINT_RADIUS * 3 * 2;
+console.log(totalLength);
+
+// recording + replaying
 const UPDATE_INTERVAL = 100; // milliseconds
 const NUM_FRAMES_RECORD = 50;
+
+// colors
+const LIGHT_PINK = "#FFEDF4";

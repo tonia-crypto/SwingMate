@@ -98,7 +98,7 @@ class Arm {
     sphere(JOINT_RADIUS);
     translate(0, BOX_HEIGHT / 2, 0);
 
-    box(BOX_WIDTH, BOX_HEIGHT, 30);
+    box(BOX_WIDTH, BOX_HEIGHT, BOX_DEPTH);
 
     translate(0, BOX_HEIGHT / 2, 0);
     sphere(JOINT_RADIUS);
@@ -107,7 +107,7 @@ class Arm {
     rotateY(myFore.x);
     rotateZ(myFore.z);
 
-    box(BOX_WIDTH, BOX_HEIGHT * 2, 30);
+    box(BOX_WIDTH, BOX_HEIGHT * 2, BOX_DEPTH);
 
     translate(0, BOX_HEIGHT, 0);
     sphere(JOINT_RADIUS);
