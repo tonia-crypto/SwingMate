@@ -9,6 +9,8 @@ class Arm {
     this.windowSize = 5;
     this.foreValues = [];
     this.upperValues = [];
+
+    this.fillColor = MODEL_YELLOW;
   }
 
   resetMovingAverage() {
@@ -61,6 +63,10 @@ class Arm {
     this.upperRotation.set(avg);
   }
 
+  setFillColor(fillColor) {
+    this.fillColor = fillColor;
+  }
+
   zeroUpper() {
     this.upperOffset.set(this.upperRotation);
   }
@@ -90,12 +96,12 @@ class Arm {
     }
 
     push();
-    fill(OFF_PURPLE);
+    fill(this.fillColor);
+    rotateZ(myUpper.z);
     rotateX(myUpper.y);
     rotateY(myUpper.x);
-    rotateZ(myUpper.z);
 
-    translate(0, (-1 * BOX_HEIGHT) / 2, 0);
+    // translate(0, (-1 * BOX_HEIGHT) / 2, 0);
     sphere(JOINT_RADIUS, 32, 32);
     translate(0, BOX_HEIGHT / 2, 0);
 
@@ -104,9 +110,9 @@ class Arm {
     translate(0, BOX_HEIGHT / 2, 0);
     sphere(JOINT_RADIUS, 32, 32);
 
+    rotateZ(myFore.z);
     rotateX(myFore.y);
     rotateY(myFore.x);
-    rotateZ(myFore.z);
 
     box(BOX_WIDTH, BOX_HEIGHT * 2, BOX_DEPTH, 32, 32);
 

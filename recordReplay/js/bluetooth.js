@@ -93,8 +93,4 @@ class BluetoothManager {
   isConnected() {
     return this.connected;
   }
-
-  test() {
-    console.log("Pring pring");
-  }
 }

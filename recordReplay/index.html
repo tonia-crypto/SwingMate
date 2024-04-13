@@ -13,6 +13,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles/global.css" />
+    <link rel="stylesheet" href="styles/setup.css" />
     <link rel="stylesheet" href="styles/slider.css" />
     <script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.js"></script>
     <script src="js/constants.js"></script>
@@ -26,56 +27,57 @@
   </head>
   <body>
     <header id="header">SwingMate</header>
+    <section id="setup_screen">
+      <p>Connect to your Sensors Through Bluetooth</p>
+      <button id="connect_upper_btn" class="primary_btn">
+        <div>Upperarm</div>
+      </button>
+      <button id="connect_fore_btn" class="primary_btn">
+        <div>Forearm</div>
+      </button>
+    </section>
 
-    <div id="canvas_container">
-      <main>
-        <!-- P5.js will inject code in here -->
-        <button id="zero_btn" class="secondary_btn">Set Root Position</button>
-        <img id="live-icon" src="icons/live-icon.png" />
-      </main>
-    </div>
-    <section id="controls">
-      <div>
-        <button id="connect_upper_btn" class="primary_btn">
-          Connect Upperarm
-        </button>
-        <button id="connect_fore_btn" class="primary_btn">
-          Connect Forearm
-        </button>
+    <section id="model_screen">
+      <div id="canvas_container">
+        <main>
+          <!-- P5.js will inject code in here -->
+          <button id="zero_btn" class="secondary_btn">Set Root Position</button>
+          <img id="live-icon" src="icons/live-icon.png" />
+        </main>
       </div>
-
-      <button id="record_btn" class="primary_btn">RECORD</button>
-
-      <div id="slider_container">
-        <button class="slider_btn" id="playBtn">
-          <img
-            class="btn_icon"
-            id="playIcon"
-            src="icons/play-solid.svg"
-            alt="Play"
-          />
-          <img
-            class="btn_icon"
-            id="stopIcon"
-            src="icons/stop-solid.svg"
-            alt="Stop"
-          />
-        </button>
-        <div id="range_container">
-          <div class="sliders_control">
-            <input id="fromSlider" type="range" value="0" min="0" max="100" />
-            <input id="toSlider" type="range" value="100" min="0" max="100" />
-            <input id="playSlider" type="range" value="0" min="0" max="100" />
+      <div id="controls">
+        <div id="slider_container">
+          <button class="slider_btn" id="playBtn">
+            <img
+              class="btn_icon"
+              id="playIcon"
+              src="icons/play-solid.svg"
+              alt="Play"
+            />
+            <img
+              class="btn_icon"
+              id="stopIcon"
+              src="icons/stop-solid.svg"
+              alt="Stop"
+            />
+          </button>
+          <div id="range_container">
+            <div class="sliders_control">
+              <input id="fromSlider" type="range" value="0" min="0" max="100" />
+              <input id="toSlider" type="range" value="100" min="0" max="100" />
+              <input id="playSlider" type="range" value="0" min="0" max="100" />
+            </div>
           </div>
+          <button class="slider_btn" id="cropBtn">
+            <img
+              class="btn_icon"
+              id="cropIcon"
+              src="icons/crop-solid.svg"
+              alt="Crop"
+            />
+          </button>
         </div>
-        <button class="slider_btn" id="cropBtn">
-          <img
-            class="btn_icon"
-            id="cropIcon"
-            src="icons/crop-solid.svg"
-            alt="Crop"
-          />
-        </button>
+        <button id="record_btn" class="primary_btn">RECORD</button>
       </div>
     </section>
   </body>

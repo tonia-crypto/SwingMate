@@ -1,5 +1,6 @@
 const DEBUG_MODE = false;
 
+let setupScreen = false;
 let replayState = false;
 
 let lastUpdate = 0;
@@ -9,7 +10,7 @@ let play = false;
 let playIndex = 0;
 let recordedData = [];
 
-let recordCounter = NUM_FRAMES_RECORD;
+let recordCounter = MAX_RECORD_FRAMES;
 
 let upperarmBluetoothManager;
 let forearmBluetoothManager;
@@ -17,13 +18,6 @@ let myArm;
 let myDom;
 
 let slider;
-
-function startRecord() {
-  replayState = false;
-  recordCounter = NUM_FRAMES_RECORD;
-  recordedData = [];
-  record = true;
-}
 
 function startReplay() {
   if (record) record = false;
@@ -44,8 +38,10 @@ function setup() {
   frameRate(10);
 
   myDom = new Dom(upperarmBluetoothManager, forearmBluetoothManager, myArm);
+
   myDom.setDebugMode(DEBUG_MODE);
-  myDom.getRecordBtn().mousePressed(startRecord);
+
+  myDom.getRecordBtn().mousePressed(onRecordStopBtn);
 
   if (DEBUG_MODE) {
     recordedData = dummyData;
@@ -53,7 +49,6 @@ function setup() {
 }
 
 async function draw() {
-  orbitControl();
   ambientLight(150);
   pointLight(200, 200, 200, 100, 100, 100);
 
@@ -102,16 +97,7 @@ async function draw() {
     }
   }
 
-  // background(250);
-  if (record && play) {
-    background("#54040b"); // maroon
-  } else if (record) {
-    background("#f2a5a5"); // redish
-  } else if (play) {
-    background("#c8a5f2"); // lilac
-  } else {
-    background(LIGHT_PINK);
-  }
+  background(LIGHT_PINK);
 
   // normalMaterial();
   myArm.draw(play);

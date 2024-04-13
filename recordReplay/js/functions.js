@@ -4,7 +4,7 @@ function onFinishRecording() {
 
   // initialize slider
   if (slider == null) {
-    slider = new Slider(NUM_FRAMES_RECORD - 1);
+    slider = new Slider(recordedData.length - 1);
     slider.playSlider.addEventListener("playSliderUpdate", () => {
       playIndex = slider.getPlayValueInt();
     });
@@ -12,10 +12,10 @@ function onFinishRecording() {
     myDom.getPlayBtn().mousePressed(() => onPlayBtn());
     myDom.getCropBtn().mousePressed(() => onCropBtn());
   } else {
-    slider.updateMax(NUM_FRAMES_RECORD - 1);
+    slider.updateMax(recordedData.length - 1);
   }
 
-  myDom.getRecordBtn().html("Rerecord");
+  myDom.setPlayMode();
   replayState = true;
 }
 
@@ -44,10 +44,23 @@ function onCropBtn() {
   let from = slider.getFromValueInt();
   let to = slider.getToValueInt();
   let newRangeDist = to - from;
+  console.log(newRangeDist);
 
-  slider.updateMax(newRangeDist - 1);
+  slider.updateMax(newRangeDist);
 
-  recordData = recordData.slice(from, to + 1);
+  recordedData = recordedData.slice(from, to + 1);
 
   playIndex = 0;
+}
+
+function onRecordStopBtn() {
+  if (!record) {
+    replayState = false;
+    recordCounter = MAX_RECORD_FRAMES;
+    recordedData = [];
+    myDom.setRecordMode();
+    record = true;
+  } else {
+    onFinishRecording();
+  }
 }
