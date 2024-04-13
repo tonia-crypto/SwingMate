@@ -3,6 +3,7 @@
   --pink: #ffd0e3;
   --dark-pink: #b23e76;
   --dark-purple: #4c0f89;
+  --grey: #bebebe;
 }
 
 body {
@@ -57,9 +58,12 @@ canvas {
   font-weight: 600;
   font-size: 16px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-  transition: box-shadow 0.3s ease;
   cursor: pointer;
   color: var(--dark-pink);
+}
+
+button {
+  transition: box-shadow 0.3s ease;
 }
 
 button:hover {

@@ -12,7 +12,8 @@
       href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Inter:wght@100..900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="styles/global.css" />
+    <link rel="stylesheet" href="styles/slider.css" />
     <script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.js"></script>
     <script src="constants.js"></script>
     <script src="dummyData/data.js"></script>
@@ -42,6 +43,38 @@
 
       <button id="record_btn" class="primary_btn">RECORD</button>
       <button id="replay_btn" class="secondary_btn">Replay</button>
+
+      <div id="slider_container">
+        <button class="slider_btn" id="playBtn">
+          <img
+            class="btn_icon"
+            id="playIcon"
+            src="icons/play-solid.svg"
+            alt="Play"
+          />
+          <img
+            class="btn_icon"
+            id="stopIcon"
+            src="icons/stop-solid.svg"
+            alt="Stop"
+          />
+        </button>
+        <div id="range_container">
+          <div class="sliders_control">
+            <input id="fromSlider" type="range" value="0" min="0" max="100" />
+            <input id="toSlider" type="range" value="100" min="0" max="100" />
+            <input id="playSlider" type="range" value="0" min="0" max="100" />
+          </div>
+        </div>
+        <button class="slider_btn" id="cropBtn">
+          <img
+            class="btn_icon"
+            id="cropIcon"
+            src="icons/crop-solid.svg"
+            alt="Crop"
+          />
+        </button>
+      </div>
     </section>
   </body>
 </html>

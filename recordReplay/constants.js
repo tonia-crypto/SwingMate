@@ -15,8 +15,8 @@ const ID_TAGS = {
 };
 
 // sizes
-const CANVAS_WIDTH = 400;
-const CANVAS_HEIGHT = 400;
+const CANVAS_WIDTH = 500;
+const CANVAS_HEIGHT = 500;
 const BOX_HEIGHT = 80;
 const BOX_WIDTH = 15;
 const BOX_DEPTH = BOX_WIDTH;
