@@ -51,6 +51,8 @@ function setup() {
 
 async function draw() {
   orbitControl();
+  ambientLight(150);
+  pointLight(200, 200, 200, 100, 100, 100);
 
   if (replay) {
     // -------------- REPLAY -------------------------
@@ -105,7 +107,7 @@ async function draw() {
     background(LIGHT_PINK);
   }
 
-  normalMaterial();
+  // normalMaterial();
   myArm.draw(replay);
 
   // recording data

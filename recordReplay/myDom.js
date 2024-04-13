@@ -63,7 +63,6 @@ class Dom {
     if (debugMode) {
       this.header.html("Debug Mode");
       this.connectUpperBtn.hide();
-      this.zeroUpperBtn.hide();
       this.zeroBtn.hide();
       this.connectForeBtn.hide();
       this.recordBtn.hide();
