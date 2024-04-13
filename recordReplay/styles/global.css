@@ -36,8 +36,7 @@ canvas {
 
 #zero_btn {
   position: absolute;
-  top: 0;
-  left: 240px;
+  transform: translateX(-90%);
 }
 
 #live_container {
