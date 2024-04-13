@@ -9,6 +9,7 @@ class Dom {
     this.modelScreen = select(ID_TAGS.MODEL_SCREEN);
 
     this.canvasContainer = select(ID_TAGS.CANVAS_CONTAINER);
+    this.canvas = select("canvas");
     this.header = select(ID_TAGS.HEADER);
 
     // buttons
@@ -22,6 +23,9 @@ class Dom {
     // icons
     this.playIcon = select(ID_TAGS.PLAY_ICON);
     this.stopIcon = select(ID_TAGS.STOP_ICON);
+    this.liveIcon = select(ID_TAGS.LIVE_ICON);
+
+    this.sliderContainer = select(ID_TAGS.SLIDER_CONTAINER);
 
     this.connectUpperBtn.mousePressed(this.connectUpper.bind(this));
     this.connectForeBtn.mousePressed(this.connectFore.bind(this));
@@ -136,6 +140,20 @@ class Dom {
   setModelScreen() {
     // this.setupScreen.style("display: none"); // FIXME
     this.modelScreen.show();
+    // this.canvas.style("border: 1px solid black");
+  }
+
+  setRecordMode() {
+    this.recordBtn.html("STOP");
+    this.liveIcon.show();
+    this.myArm.setFillColor(MODEL_RED);
+  }
+
+  setPlayMode() {
+    this.recordBtn.html("Rerecord");
+    this.liveIcon.hide();
+    this.zeroBtn.hide();
+    this.myArm.setFillColor(MODEL_PURPLE);
   }
 
   /**

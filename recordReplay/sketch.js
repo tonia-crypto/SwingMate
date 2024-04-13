@@ -10,7 +10,7 @@ let play = false;
 let playIndex = 0;
 let recordedData = [];
 
-let recordCounter = NUM_FRAMES_RECORD;
+let recordCounter = MAX_RECORD_FRAMES;
 
 let upperarmBluetoothManager;
 let forearmBluetoothManager;
@@ -97,16 +97,7 @@ async function draw() {
     }
   }
 
-  // background(250);
-  if (record && play) {
-    background("#54040b"); // maroon
-  } else if (record) {
-    background("#f2a5a5"); // redish
-  } else if (play) {
-    background("#c8a5f2"); // lilac
-  } else {
-    background(LIGHT_PINK);
-  }
+  background(LIGHT_PINK);
 
   // normalMaterial();
   myArm.draw(play);

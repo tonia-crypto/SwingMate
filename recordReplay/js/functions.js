@@ -15,7 +15,7 @@ function onFinishRecording() {
     slider.updateMax(recordedData.length - 1);
   }
 
-  myDom.getRecordBtn().html("Rerecord");
+  myDom.setPlayMode();
   replayState = true;
 }
 
@@ -55,9 +55,9 @@ function onCropBtn() {
 function onRecordStopBtn() {
   if (!record) {
     replayState = false;
-    recordCounter = NUM_FRAMES_RECORD;
+    recordCounter = MAX_RECORD_FRAMES;
     recordedData = [];
-    myDom.getRecordBtn().html("STOP");
+    myDom.setRecordMode();
     record = true;
   } else {
     onFinishRecording();

@@ -38,6 +38,8 @@ main {
 
 canvas {
   border-radius: 14px;
+  box-shadow: rgba(61, 61, 246, 0.25) 0px 2px 5px -1px,
+    rgba(255, 16, 16, 0.3) 0px 1px 3px -1px;
 }
 
 #zero_btn {
@@ -68,6 +70,7 @@ canvas {
 }
 
 .secondary_btn {
+  background-color: var(--white);
   border: none;
   margin: 20px 0;
   border: 2px solid var(--dark-pink);

@@ -14,10 +14,12 @@ const ID_TAGS = {
   CROP_BTN: "#cropBtn",
   PLAY_ICON: "#playIcon",
   STOP_ICON: "#stopIcon",
+  LIVE_ICON: "#live-icon",
   HEADER: "#header",
   CANVAS_CONTAINER: "#canvas_container",
   SETUP_SCREEN: "#setup_screen",
   MODEL_SCREEN: "#model_screen",
+  SLIDER_CONTAINER: "#slider_container",
 };
 
 const SCREENS = {
@@ -36,10 +38,16 @@ const JOINT_RADIUS = 20;
 
 // recording + replaying
 const UPDATE_INTERVAL = 100; // milliseconds
-const NUM_FRAMES_RECORD = 50;
+const MAX_RECORD_FRAMES = 50;
 
 // colors
 const LIGHT_PINK = "#FFEDF4";
 const DARK_PURPLE = "#4C0F89";
 const OFF_PURPLE = "#6260C7";
+const LIGHT_PURPLE = "#F8E3FF";
+const YELLOW = "#FFF2E3";
 const GREY = "#BEBEBE";
+
+const MODEL_PURPLE = "#727cf7";
+const MODEL_RED = "#b50000";
+const MODEL_YELLOW = "#ebc326";

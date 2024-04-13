@@ -9,6 +9,8 @@ class Arm {
     this.windowSize = 5;
     this.foreValues = [];
     this.upperValues = [];
+
+    this.fillColor = MODEL_YELLOW;
   }
 
   resetMovingAverage() {
@@ -61,6 +63,10 @@ class Arm {
     this.upperRotation.set(avg);
   }
 
+  setFillColor(fillColor) {
+    this.fillColor = fillColor;
+  }
+
   zeroUpper() {
     this.upperOffset.set(this.upperRotation);
   }
@@ -90,7 +96,7 @@ class Arm {
     }
 
     push();
-    fill(OFF_PURPLE);
+    fill(this.fillColor);
     rotateZ(myUpper.z);
     rotateX(myUpper.y);
     rotateY(myUpper.x);
