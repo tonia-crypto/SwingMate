@@ -10,6 +10,7 @@ function onFinishRecording() {
     });
 
     myDom.getPlayBtn().mousePressed(() => onPlayBtn());
+    myDom.getCropBtn().mousePressed(() => onCropBtn());
   } else {
     slider.updateMax(NUM_FRAMES_RECORD - 1);
   }
@@ -37,4 +38,16 @@ function onPlayBtn() {
     myDom.toggleStopIcon();
     play = false;
   }
+}
+
+function onCropBtn() {
+  let from = slider.getFromValueInt();
+  let to = slider.getToValueInt();
+  let newRangeDist = to - from;
+
+  slider.updateMax(newRangeDist - 1);
+
+  recordData = recordData.slice(from, to + 1);
+
+  playIndex = 0;
 }

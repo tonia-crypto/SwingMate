@@ -11,6 +11,7 @@ class Dom {
     this.zeroBtn = select(ID_TAGS.ZERO_BTN);
     this.recordBtn = select(ID_TAGS.RECORD_BTN);
     this.playBtn = select(ID_TAGS.PLAY_BTN);
+    this.cropBtn = select(ID_TAGS.CROP_BTN);
 
     this.playIcon = select(ID_TAGS.PLAY_ICON);
     this.stopIcon = select(ID_TAGS.STOP_ICON);
@@ -68,6 +69,10 @@ class Dom {
 
   getPlayBtn() {
     return this.playBtn;
+  }
+
+  getCropBtn() {
+    return this.cropBtn;
   }
 
   getRecordBtn() {
