@@ -20,10 +20,10 @@ const ID_TAGS = {
 // sizes
 const CANVAS_WIDTH = 500;
 const CANVAS_HEIGHT = 500;
-const BOX_HEIGHT = 80;
-const BOX_WIDTH = 15;
+const BOX_HEIGHT = 100;
+const BOX_WIDTH = 20;
 const BOX_DEPTH = BOX_WIDTH;
-const JOINT_RADIUS = 15;
+const JOINT_RADIUS = 20;
 
 // recording + replaying
 const UPDATE_INTERVAL = 100; // milliseconds

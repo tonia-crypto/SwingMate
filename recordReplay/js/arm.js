@@ -91,11 +91,11 @@ class Arm {
 
     push();
     fill(OFF_PURPLE);
+    rotateZ(myUpper.z);
     rotateX(myUpper.y);
     rotateY(myUpper.x);
-    rotateZ(myUpper.z);
 
-    translate(0, (-1 * BOX_HEIGHT) / 2, 0);
+    // translate(0, (-1 * BOX_HEIGHT) / 2, 0);
     sphere(JOINT_RADIUS, 32, 32);
     translate(0, BOX_HEIGHT / 2, 0);
 
@@ -104,9 +104,9 @@ class Arm {
     translate(0, BOX_HEIGHT / 2, 0);
     sphere(JOINT_RADIUS, 32, 32);
 
+    rotateZ(myFore.z);
     rotateX(myFore.y);
     rotateY(myFore.x);
-    rotateZ(myFore.z);
 
     box(BOX_WIDTH, BOX_HEIGHT * 2, BOX_DEPTH, 32, 32);
 
