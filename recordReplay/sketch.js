@@ -19,6 +19,7 @@ let myDom;
 let slider;
 
 function startRecord() {
+  replayState = false;
   recordCounter = NUM_FRAMES_RECORD;
   recordedData = [];
   record = true;
@@ -44,7 +45,6 @@ function setup() {
 
   myDom = new Dom(upperarmBluetoothManager, forearmBluetoothManager, myArm);
   myDom.setDebugMode(DEBUG_MODE);
-
   myDom.getRecordBtn().mousePressed(startRecord);
 
   if (DEBUG_MODE) {

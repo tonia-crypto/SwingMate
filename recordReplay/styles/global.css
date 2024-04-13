@@ -24,6 +24,7 @@ header {
 
 /* Canvas Container */
 main {
+  position: relative;
   display: flex;
   justify-content: center;
   margin: 20px 0;
@@ -31,6 +32,15 @@ main {
 
 canvas {
   border-radius: 14px;
+}
+
+#zero_btn {
+  position: absolute;
+  top: 0;
+  left: 240px;
+}
+
+#live_container {
 }
 
 .primary_btn {
