@@ -6,61 +6,27 @@ class Arm {
     this.upperOffset = createVector(0, 0, 0);
     this.foreOffset = createVector(0, 0, 0);
 
-    this.windowSize = 5;
-    this.foreValues = [];
-    this.upperValues = [];
-
     this.fillColor = MODEL_YELLOW;
   }
 
-  resetMovingAverage() {
-    this.foreValues = [];
-    this.upperValues = [];
+  /**
+   *
+   * @param {Array} coord [x, y, z]
+   */
+  setUpperRotation(coord) {
+    this.upperRotation.x = coord[0];
+    this.upperRotation.y = coord[1];
+    this.upperRotation.z = coord[2];
   }
 
-  // coord: [x, y, z]
-  isValidRotationCoord(coord) {
-    // check if coord and not every coord is 0
-    return coord && Array.isArray(coord) && coord.every((val) => val != 0);
-  }
-
-  // rotations: [x, y, z]
-  updateForeRotation(rotations) {
-    // validate data
-    this.isValidRotationCoord(rotations);
-
-    // moving average
-    this.foreValues.push(rotations);
-    if (this.foreValues.length > this.windowSize) {
-      this.foreValues.shift();
-    }
-
-    let avg = createVector(0, 0, 0);
-    for (let value of this.foreValues) {
-      avg.add(value);
-    }
-    avg.div(this.foreValues.length);
-    this.foreRotation.set(avg);
-  }
-
-  // rotations: [x, y, z]
-  updateUpperRotation(rotations) {
-    // validate data
-    this.isValidRotationCoord(rotations);
-
-    // moving average
-    this.upperValues.push(rotations);
-    if (this.upperValues.length > this.windowSize) {
-      this.upperValues.shift();
-    }
-
-    let avg = createVector(0, 0, 0);
-    for (let value of this.upperValues) {
-      avg.add(value);
-    }
-
-    avg.div(this.upperValues.length);
-    this.upperRotation.set(avg);
+  /**
+   *
+   * @param {Array} coord [x, y, z]
+   */
+  setForeRotation(coord) {
+    this.foreRotation.x = coord[0];
+    this.foreRotation.y = coord[1];
+    this.foreRotation.z = coord[2];
   }
 
   setFillColor(fillColor) {
@@ -75,6 +41,10 @@ class Arm {
     this.foreOffset.set(this.foreRotation);
   }
 
+  /**
+   * Gets double array of current upper and fore arm coordinates
+   * @returns {Array} [upper - [x, y, z], fore - [x, y, z]];
+   */
   getRotationVector() {
     let myUpper = p5.Vector.sub(this.upperRotation, this.upperOffset);
     let myFore = p5.Vector.sub(this.foreRotation, this.foreOffset);
@@ -85,6 +55,12 @@ class Arm {
     ];
   }
 
+  /**
+   * Draws arm according to stored upper + fore rotation.
+   * Will used stored offset if noOffset set to false
+   *
+   * @param {boolean} noOffset whether should use the saved offset values
+   */
   draw(noOffset) {
     let myUpper, myFore;
     if (!noOffset) {
@@ -98,8 +74,8 @@ class Arm {
     push();
     fill(this.fillColor);
     rotateZ(myUpper.z);
-    rotateX(myUpper.y);
-    rotateY(myUpper.x);
+    rotateX(myUpper.x);
+    rotateY(-myUpper.y);
 
     // translate(0, (-1 * BOX_HEIGHT) / 2, 0);
     sphere(JOINT_RADIUS, 32, 32);

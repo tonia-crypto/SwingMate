@@ -35,7 +35,7 @@ function setup() {
   createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT, WEBGL);
   angleMode(DEGREES);
 
-  frameRate(10);
+  // frameRate(10);
 
   myDom = new Dom(upperarmBluetoothManager, forearmBluetoothManager, myArm);
 
@@ -48,7 +48,7 @@ function setup() {
   }
 }
 
-async function draw() {
+function draw() {
   ambientLight(150);
   pointLight(200, 200, 200, 100, 100, 100);
 
@@ -57,8 +57,8 @@ async function draw() {
     let upperCoord = recordedData[playIndex][0];
     let foreCoord = recordedData[playIndex][1];
 
-    myArm.updateUpperRotation(upperCoord);
-    myArm.updateForeRotation(foreCoord);
+    myArm.setUpperRotation(upperCoord);
+    myArm.setForeRotation(foreCoord);
 
     if (play) {
       // update play index
@@ -74,32 +74,21 @@ async function draw() {
     }
   } else if (!DEBUG_MODE) {
     // -------------- LIVE FEED ----------------------
-    const now = millis();
-    const deltaTime = now - lastUpdate;
+    if (upperarmBluetoothManager.connected) {
+      upperarmBluetoothManager.setRotation((coord) =>
+        myArm.setUpperRotation([coord])
+      );
+    }
 
-    // reading sensors
-    if (
-      (upperarmBluetoothManager.connected ||
-        forearmBluetoothManager.connected) &&
-      deltaTime >= UPDATE_INTERVAL
-    ) {
-      lastUpdate = now;
-
-      if (upperarmBluetoothManager.connected) {
-        const coordUpper = await upperarmBluetoothManager.getCoord();
-        myArm.updateUpperRotation(coordUpper);
-      }
-
-      if (forearmBluetoothManager.connected) {
-        const coordFore = await forearmBluetoothManager.getCoord();
-        myArm.updateForeRotation(coordFore);
-      }
+    if (forearmBluetoothManager.connected) {
+      forearmBluetoothManager.setRotation((coord) =>
+        myArm.setForeRotation(coord)
+      );
     }
   }
 
   background(LIGHT_PINK);
 
-  // normalMaterial();
   myArm.draw(play);
 
   // recording data

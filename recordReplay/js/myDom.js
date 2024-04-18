@@ -51,8 +51,9 @@ class Dom {
     }
 
     // go to next screen if both connected
+    // FIXME: should be && not OR
     if (
-      this.foreBluetoothManager.isConnected() &&
+      this.foreBluetoothManager.isConnected() ||
       this.upperBluetoothManager.isConnected()
     ) {
       this.setModelScreen();
@@ -76,8 +77,9 @@ class Dom {
     }
 
     // go to next screen if both connected
+    // FIXME: Should be AND not OR
     if (
-      this.foreBluetoothManager.isConnected() &&
+      this.foreBluetoothManager.isConnected() ||
       this.upperBluetoothManager.isConnected()
     ) {
       this.setModelScreen();

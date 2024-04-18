@@ -5,9 +5,27 @@ class BluetoothManager {
     this.device = null;
     this.characteristic = null;
     this.connected = false;
+
+    this.characteristicLocked = false;
   }
 
-  async connectToDevice() {
+  async scanDevices() {
+    console.log("Scanning...");
+    try {
+      this.device = await navigator.bluetooth.requestDevice({
+        filters: [{ name: this.chipName }],
+        optionalServices: ["generic_access", SERVICE_UUID],
+      });
+
+      console.log("Found device:", this.device.name);
+
+      await this.connect();
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  }
+
+  async connect() {
     if (!this.device) {
       console.error("No device selected");
       return false;
@@ -48,43 +66,24 @@ class BluetoothManager {
     return false;
   }
 
-  async scanDevices() {
-    console.log("Scanning...");
+  /**
+   *
+   * @param {Arm.function} setRotation setter function that will update the arm rotation with parameters (x, y, z)
+   * @returns
+   */
+  async setRotation(setRotation) {
     try {
-      this.device = await navigator.bluetooth.requestDevice({
-        filters: [{ name: this.chipName }],
-        optionalServices: ["generic_access", SERVICE_UUID],
-      });
+      // lock + read value
+      if (this.characteristicLocked) return;
+      else this.characteristicLocked = true;
+      let val = await this.characteristic.readValue(); // read value
+      this.characteristicLocked = false;
 
-      console.log("Found device:", this.device.name);
+      let x = val.getFloat32(0, true);
+      let y = val.getFloat32(4, true);
+      let z = val.getFloat32(8, true);
 
-      await this.connectToDevice();
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  }
-
-  async getCoord() {
-    if (!this.connected) {
-      return [0, 0, 0];
-    }
-
-    const readValue = () => {
-      return new Promise((resolve, reject) => {
-        this.characteristic.readValue().then(resolve).catch(reject);
-      });
-    };
-
-    try {
-      const val = await readValue();
-
-      const coord = [
-        val.getFloat32(0, true),
-        val.getFloat32(4, true),
-        val.getFloat32(8, true),
-      ];
-
-      return coord;
+      setRotation([x, y, z]);
     } catch (error) {
       console.error("Error while reading value:", error);
     }
