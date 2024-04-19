@@ -19,6 +19,7 @@ class Slider {
     this.playSlider.oninput = () => this.playSliderControl();
 
     this.playSliderUpdateEvent = new Event("playSliderUpdate");
+    this.fromSliderUpdateEvent = new Event("fromSliderUpdate");
 
     this.unhide();
   }
@@ -79,6 +80,7 @@ class Slider {
     }
     this.playSlider.value = fromSlider.value;
     this.broadcastPlaySliderUpdate();
+    this.fromSlider.dispatchEvent(this.fromSliderUpdateEvent);
   }
 
   toSliderControl() {

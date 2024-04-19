@@ -1,8 +1,9 @@
 class Dom {
-  constructor(upperBluetoothManager, foreBluetoothManager, myArm) {
+  constructor(upperBluetoothManager, foreBluetoothManager, myArm, myArm2) {
     this.upperBluetoothManager = upperBluetoothManager;
     this.foreBluetoothManager = foreBluetoothManager;
     this.myArm = myArm;
+    this.myArm2 = myArm2;
 
     //screens
     this.setupScreen = select(ID_TAGS.SETUP_SCREEN);
@@ -160,7 +161,13 @@ class Dom {
     this.recordBtn.class(CLASS_TAGS.SECONDARY_BTN);
     this.liveIcon.hide();
     this.zeroBtn.hide();
-    this.myArm.setFillColor(MODEL_PURPLE);
+
+    if (recordNum == 1) {
+      this.myArm.setFillColor(MODEL_PURPLE);
+    } else {
+      this.myArm2.setFillColor(MODEL_PURPLE);
+      this.myArm.setFillColor(MODEL_GREEN);
+    }
     this.sliderContainer.style("display: flex");
 
     console.log("recordNum:", recordNum);

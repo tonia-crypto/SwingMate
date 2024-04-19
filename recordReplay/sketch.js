@@ -11,6 +11,8 @@ let playIndex = 0;
 let recordedData = [];
 let recordedData2 = [];
 
+let playIndexOffset1 = 0;
+
 let recordNum = 1;
 
 let recordCounter = MAX_RECORD_FRAMES;
@@ -41,7 +43,12 @@ function setup() {
 
   // frameRate(10);
 
-  myDom = new Dom(upperarmBluetoothManager, forearmBluetoothManager, myArm);
+  myDom = new Dom(
+    upperarmBluetoothManager,
+    forearmBluetoothManager,
+    myArm,
+    myArm2
+  );
 
   myDom.setDebugMode(DEBUG_MODE);
 
@@ -59,7 +66,7 @@ function draw() {
 
   if (replayState) {
     // -------------- REPLAY -------------------------
-    let index1 = playIndex;
+    let index1 = playIndex - playIndexOffset1;
     if (index1 >= recordedData.length) {
       index1 = recordedData.length - 1;
     }

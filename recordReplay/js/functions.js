@@ -21,6 +21,13 @@ function onFinishRecording() {
     slider.updateMax(recordedDataLength);
   }
 
+  if (recordNum == 2) {
+    slider.fromSlider.addEventListener("fromSliderUpdate", () => {
+      playIndexOffset1 = slider.getPlayValueInt();
+    });
+    myArm.setFillColor(MODEL_GREEN);
+  }
+
   console.log("Set play modes");
   myDom.setPlayMode(recordNum);
 
@@ -64,15 +71,18 @@ function onRecordStopBtn(btnNum) {
   if (!record) {
     replayState = false;
     recordCounter = MAX_RECORD_FRAMES;
-    if (btnNum == 1) {
+
+    if (btnNum == 1 && recordNum != 2) {
       recordedData = [];
       recordNum = 1;
-    } else if (btnNum == 2) {
+    } else {
       myArm2.upperOffset = myArm.upperOffset;
       myArm2.foreOffset = myArm.foreOffset;
 
       recordedData2 = [];
       recordNum = 2;
+      playIndexOffset1 = 0;
+      myArm.setFillColo;
     }
     myDom.setRecordMode();
     record = true;

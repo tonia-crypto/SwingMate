@@ -58,3 +58,4 @@ const GREY = "#BEBEBE";
 const MODEL_PURPLE = "#727cf7";
 const MODEL_RED = "#b50000";
 const MODEL_YELLOW = "#ebc326";
+let MODEL_GREEN = [17, 153, 37, 150];
