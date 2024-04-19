@@ -18,13 +18,13 @@ let recordCounter = MAX_RECORD_FRAMES;
 let upperarmBluetoothManager;
 let forearmBluetoothManager;
 let myArm;
+let myArm2;
 let myDom;
 
 let slider;
 
 function startReplay() {
   if (record) record = false;
-  myArm.resetMovingAverage();
   playIndex = 0;
   play = true;
 }
@@ -34,6 +34,7 @@ function setup() {
   forearmBluetoothManager = new BluetoothManager(FOREARM_CHIP_NAME);
 
   myArm = new Arm();
+  myArm2 = new Arm();
 
   createCanvas(CANVAS_WIDTH, CANVAS_HEIGHT, WEBGL);
   angleMode(DEGREES);
@@ -50,7 +51,6 @@ function setup() {
   if (DEBUG_MODE) {
     recordedData = dummyData;
   }
-  debugMode();
 }
 
 function draw() {
@@ -59,11 +59,24 @@ function draw() {
 
   if (replayState) {
     // -------------- REPLAY -------------------------
-    let upperCoord = recordedData[playIndex][0];
-    let foreCoord = recordedData[playIndex][1];
+    let index1 = playIndex;
+    if (index1 >= recordedData.length) {
+      index1 = recordedData.length - 1;
+    }
+
+    let upperCoord = recordedData[index1][0];
+    let foreCoord = recordedData[index1][1];
 
     myArm.setUpperRotation(upperCoord);
     myArm.setForeRotation(foreCoord);
+
+    if (recordNum == 2) {
+      let upperCoord2 = recordedData2[playIndex][0];
+      let foreCoord2 = recordedData2[playIndex][1];
+
+      myArm2.setUpperRotation(upperCoord2);
+      myArm2.setForeRotation(foreCoord2);
+    }
 
     if (play) {
       // update play index
@@ -94,7 +107,11 @@ function draw() {
 
   background(LIGHT_PINK);
 
+  // draw
   myArm.draw(play);
+  if (replayState && recordNum == 2) {
+    myArm2.draw();
+  }
 
   // recording data
   if (record) {

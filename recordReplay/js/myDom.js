@@ -148,23 +148,25 @@ class Dom {
 
   setRecordMode() {
     this.recordBtn.html("STOP");
+    this.recordBtn2.hide();
     this.recordBtn.class(CLASS_TAGS.PRIMARY_BTN);
     this.liveIcon.show();
     this.myArm.setFillColor(MODEL_RED);
     this.sliderContainer.style("display: none");
   }
 
-  setPlayMode() {
+  setPlayMode(recordNum) {
     this.recordBtn.html("Rerecord");
     this.recordBtn.class(CLASS_TAGS.SECONDARY_BTN);
     this.liveIcon.hide();
     this.zeroBtn.hide();
     this.myArm.setFillColor(MODEL_PURPLE);
     this.sliderContainer.style("display: flex");
-  }
 
-  showRecordBtn2() {
-    this.recordBtn2.show();
+    console.log("recordNum:", recordNum);
+    if (recordNum == 1) {
+      this.recordBtn2.show();
+    }
   }
 
   /**
