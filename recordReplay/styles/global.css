@@ -117,3 +117,7 @@ button:hover {
     -webkit-transform: rotate(359deg);
   }
 }
+
+#record_btn2 {
+  display: none;
+}

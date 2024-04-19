@@ -11,6 +11,7 @@ const ID_TAGS = {
   CONNECT_FORE_BTN: "#connect_fore_btn",
   ZERO_BTN: "#zero_btn",
   RECORD_BTN: "#record_btn",
+  RECORD_BTN2: "#record_btn2",
   PLAY_BTN: "#playBtn",
   CROP_BTN: "#cropBtn",
   PLAY_ICON: "#playIcon",
@@ -44,7 +45,7 @@ const JOINT_RADIUS = 20;
 
 // recording + replaying
 const UPDATE_INTERVAL = 100; // milliseconds
-const MAX_RECORD_FRAMES = 50;
+const MAX_RECORD_FRAMES = 1000;
 
 // colors
 const LIGHT_PINK = "#FFEDF4";

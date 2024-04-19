@@ -9,6 +9,9 @@ let record = false;
 let play = false;
 let playIndex = 0;
 let recordedData = [];
+let recordedData2 = [];
+
+let recordNum = 1;
 
 let recordCounter = MAX_RECORD_FRAMES;
 
@@ -41,11 +44,13 @@ function setup() {
 
   myDom.setDebugMode(DEBUG_MODE);
 
-  myDom.getRecordBtn().mousePressed(onRecordStopBtn);
+  myDom.getRecordBtn().mousePressed(() => onRecordStopBtn(1));
+  myDom.getRecordBtn2().mousePressed(() => onRecordStopBtn(2));
 
   if (DEBUG_MODE) {
     recordedData = dummyData;
   }
+  debugMode();
 }
 
 function draw() {
@@ -94,11 +99,15 @@ function draw() {
   // recording data
   if (record) {
     // -------------- RECORD ----------------------
-    recordedData.push(myArm.getRotationVector());
+    if (recordNum == 1) {
+      recordedData.push(myArm.getRotationVector());
+    } else if (recordNum == 2) {
+      recordedData2.push(myArm.getRotationVector());
+    }
     recordCounter--;
 
     if (recordCounter <= 0) {
-      onFinishRecording();
+      onFinishRecording(recordNum);
     }
   }
 }

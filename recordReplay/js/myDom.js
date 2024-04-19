@@ -17,6 +17,7 @@ class Dom {
     this.connectForeBtn = select(ID_TAGS.CONNECT_FORE_BTN);
     this.zeroBtn = select(ID_TAGS.ZERO_BTN);
     this.recordBtn = select(ID_TAGS.RECORD_BTN);
+    this.recordBtn2 = select(ID_TAGS.RECORD_BTN2);
     this.playBtn = select(ID_TAGS.PLAY_BTN);
     this.cropBtn = select(ID_TAGS.CROP_BTN);
 
@@ -121,6 +122,10 @@ class Dom {
     return this.recordBtn;
   }
 
+  getRecordBtn2() {
+    return this.recordBtn2;
+  }
+
   setDebugMode(debugMode) {
     if (debugMode) {
       this.header.html("Debug Mode");
@@ -156,6 +161,10 @@ class Dom {
     this.zeroBtn.hide();
     this.myArm.setFillColor(MODEL_PURPLE);
     this.sliderContainer.style("display: flex");
+  }
+
+  showRecordBtn2() {
+    this.recordBtn2.show();
   }
 
   /**
