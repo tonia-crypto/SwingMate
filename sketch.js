@@ -101,7 +101,7 @@ function draw() {
     // -------------- LIVE FEED ----------------------
     if (upperarmBluetoothManager.connected) {
       upperarmBluetoothManager.setRotation((coord) =>
-        myArm.setUpperRotation([coord])
+        myArm.setUpperRotation(coord)
       );
     }
 

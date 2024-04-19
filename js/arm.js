@@ -73,15 +73,10 @@ class Arm {
 
     push();
     fill(this.fillColor);
-    /* FIXME: UNCOMMENT
+
     rotateZ(myUpper.z);
     rotateX(myUpper.y);
     rotateY(myUpper.x);
-    */
-
-    rotateZ(myFore.z);
-    rotateX(myFore.y);
-    rotateY(myFore.x);
 
     // translate(0, (-1 * BOX_HEIGHT) / 2, 0);
     sphere(JOINT_RADIUS, 32, 32);
@@ -91,13 +86,11 @@ class Arm {
 
     translate(0, BOX_HEIGHT / 2, 0);
     sphere(JOINT_RADIUS, 32, 32);
-    /*
 
     rotateZ(myFore.z);
-    rotateX(myFore.x);
-    rotateY(myFore.y);
+    rotateX(myFore.y);
+    rotateY(myFore.x);
 
-    */
     box(BOX_WIDTH, BOX_HEIGHT * 2, BOX_DEPTH, 32, 32);
 
     translate(0, BOX_HEIGHT, 0);
