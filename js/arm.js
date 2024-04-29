@@ -74,9 +74,9 @@ class Arm {
     push();
     fill(this.fillColor);
 
-    rotateZ(myUpper.z);
+    rotateZ(myUpper.x);
     rotateX(myUpper.y);
-    rotateY(myUpper.x);
+    //rotateY(myUpper.x);
 
     // translate(0, (-1 * BOX_HEIGHT) / 2, 0);
     sphere(JOINT_RADIUS, 32, 32);
@@ -87,9 +87,9 @@ class Arm {
     translate(0, BOX_HEIGHT / 2, 0);
     sphere(JOINT_RADIUS, 32, 32);
 
-    rotateZ(myFore.z);
+    rotateZ(myFore.x);
     rotateX(myFore.y);
-    rotateY(myFore.x);
+    //rotateY(myFore.x);
 
     box(BOX_WIDTH, BOX_HEIGHT * 2, BOX_DEPTH, 32, 32);
 

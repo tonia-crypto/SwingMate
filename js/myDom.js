@@ -52,6 +52,7 @@ class Dom {
       this.replaceBtnWithCheckmark(this.connectUpperBtn);
     }
 
+    // FIXME
     if (
       this.foreBluetoothManager.isConnected() &&
       this.upperBluetoothManager.isConnected()

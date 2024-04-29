@@ -117,7 +117,7 @@ function draw() {
   // draw
   myArm.draw(play);
   if (replayState && recordNum == 2) {
-    myArm2.draw();
+    myArm2.draw(play);
   }
 
   // recording data
