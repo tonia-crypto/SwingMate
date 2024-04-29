@@ -1,14 +1,46 @@
+/**
+ * Represents a Bluetooth manager for handling device connections and data communication.
+ */
 class BluetoothManager {
+  /**
+   * Creates an instance of BluetoothManager.
+   * @param {string} chipName - The name of the Bluetooth chip to search for during device scanning.
+   */
   constructor(chipName) {
+    /**
+     * The name of the Bluetooth chip to search for during device scanning.
+     * @type {string}
+     */
     this.chipName = chipName;
 
+    /**
+     * The currently connected Bluetooth device.
+     * @type {BluetoothDevice | null}
+     */
     this.device = null;
+
+    /**
+     * The characteristic used for communication with the Bluetooth device.
+     * @type {BluetoothRemoteGATTCharacteristic | null}
+     */
     this.characteristic = null;
+
+    /**
+     * Indicates whether the manager is currently connected to a device.
+     * @type {boolean}
+     */
     this.connected = false;
 
+    /**
+     * Indicates whether the characteristic is locked for reading.
+     * @type {boolean}
+     */
     this.characteristicLocked = false;
   }
 
+  /**
+   * Scans for Bluetooth devices matching the specified chip name and connects to the first found device.
+   */
   async scanDevices() {
     console.log("Scanning...");
     try {
@@ -25,6 +57,10 @@ class BluetoothManager {
     }
   }
 
+  /**
+   * Connects to the currently selected Bluetooth device.
+   * @returns {boolean} True if the connection is successful, otherwise false.
+   */
   async connect() {
     if (!this.device) {
       console.error("No device selected");
@@ -32,16 +68,27 @@ class BluetoothManager {
     }
 
     console.log("Connecting to device:", this.device.name);
-    const server = await this.device.gatt.connect();
-    const service = await server.getPrimaryService(SERVICE_UUID);
-    this.characteristic = await service.getCharacteristic(CHARACTERISTIC_UUID);
+    try {
+      const server = await this.device.gatt.connect();
+      const service = await server.getPrimaryService(SERVICE_UUID);
+      this.characteristic = await service.getCharacteristic(
+        CHARACTERISTIC_UUID
+      );
 
-    console.log("Connected to device:", this.device.name);
-    this.connected = true;
+      console.log("Connected to device:", this.device.name);
+      this.connected = true;
 
-    return true;
+      return true;
+    } catch (error) {
+      console.error("Error while connecting:", error);
+      return false;
+    }
   }
 
+  /**
+   * Disconnects from the currently connected Bluetooth device.
+   * @returns {boolean} True if disconnection is successful, otherwise false.
+   */
   async disconnect() {
     if (!this.device) {
       console.error("No device to disconnect from.");
@@ -61,15 +108,13 @@ class BluetoothManager {
       return true;
     } catch (error) {
       console.error("Error while disconnecting:", error);
+      return false;
     }
-
-    return false;
   }
 
   /**
-   *
-   * @param {Arm.function} setRotation setter function that will update the arm rotation with parameters (x, y, z)
-   * @returns
+   * Reads the rotation data from the connected Bluetooth device and updates it using the provided setter function.
+   * @param {Function} setRotation - A setter function that updates the arm rotation with parameters (x, y, z).
    */
   async setRotation(setRotation) {
     try {
@@ -89,6 +134,10 @@ class BluetoothManager {
     }
   }
 
+  /**
+   * Checks if the manager is currently connected to a Bluetooth device.
+   * @returns {boolean} True if connected, otherwise false.
+   */
   isConnected() {
     return this.connected;
   }

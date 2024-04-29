@@ -1,4 +1,12 @@
 class Dom {
+  /**
+   * Constructor for DOM class
+   *
+   * @param {BluetoothManager} upperBluetoothManager - bluetooth manager of upperarm
+   * @param {BluetoothManager} foreBluetoothManager - bluetooth manager of forearm
+   * @param {Arm} myArm - primary arm model
+   * @param {Arm} myArm2 - secondary arm model
+   */
   constructor(upperBluetoothManager, foreBluetoothManager, myArm, myArm2) {
     this.upperBluetoothManager = upperBluetoothManager;
     this.foreBluetoothManager = foreBluetoothManager;
@@ -36,6 +44,9 @@ class Dom {
     this.setSetupScreen();
   }
 
+  /**
+   * Handles UI and connects the upperarm to web application
+   */
   async connectUpper() {
     this.setBtnToLoading(this.connectUpperBtn);
 
@@ -61,6 +72,9 @@ class Dom {
     }
   }
 
+  /**
+   * Handles UI and connects the forearm to web application
+   */
   async connectFore() {
     this.setBtnToLoading(this.connectForeBtn);
 
@@ -85,6 +99,11 @@ class Dom {
     }
   }
 
+  /**
+   * Shows or hides 3d arm model canvas (p5.js canvas)
+   *
+   * @param {boolean} show true to show canvas, false to hide
+   */
   showCanvas(show) {
     if (show) {
       this.canvasContainer.show();
@@ -93,37 +112,67 @@ class Dom {
     }
   }
 
+  /**
+   * zeros our the fore and upper arm to set the root postion
+   */
   zero() {
     this.myArm.zeroFore();
     this.myArm.zeroUpper();
   }
 
+  /**
+   * Displays the play icon, and hides the stop icon
+   */
   togglePlayIcon() {
     this.playIcon.show();
     this.stopIcon.hide();
   }
 
+  /**
+   * Displays the stop icon and hides the play icon on the slider
+   */
   toggleStopIcon() {
     this.playIcon.hide();
     this.stopIcon.show();
   }
 
+  /**
+   *
+   * @returns {p5.Element}
+   */
   getPlayBtn() {
     return this.playBtn;
   }
 
+  /**
+   *
+   * @returns {p5.Element}
+   */
   getCropBtn() {
     return this.cropBtn;
   }
 
+  /**
+   *
+   * @returns {p5.Element}
+   */
   getRecordBtn() {
     return this.recordBtn;
   }
 
+  /**
+   *
+   * @returns {p5.Element}
+   */
   getRecordBtn2() {
     return this.recordBtn2;
   }
 
+  /**
+   * Sets whether the application should display in Debug Mode
+   *
+   * @param {boolean} debugMode
+   */
   setDebugMode(debugMode) {
     if (debugMode) {
       this.header.html("Debug Mode");
@@ -134,16 +183,25 @@ class Dom {
     }
   }
 
+  /**
+   * Sets screen so that the canvas is hidden, and just the buttons to connect the upper and fore arm buttons
+   */
   setSetupScreen() {
     this.modelScreen.hide();
     this.setupScreen.style("display: flex");
   }
 
+  /**
+   * Displays the P5.js model and canvas
+   */
   setModelScreen() {
     this.setupScreen.style("display: none");
     this.modelScreen.show();
   }
 
+  /**
+   * Displays the UI for when recording arm swings
+   */
   setRecordMode() {
     this.recordBtn.html("STOP");
     this.recordBtn2.hide();
@@ -153,6 +211,12 @@ class Dom {
     this.sliderContainer.style("display: none");
   }
 
+  /**
+   *
+   * Sets the slider and UI so that you can replay your swing
+   *
+   * @param {number} recordNum 1 or 2: whether you are in the 1st iteration of recording, or 2nd
+   */
   setPlayMode(recordNum) {
     this.recordBtn.html("Rerecord");
     this.recordBtn.class(CLASS_TAGS.SECONDARY_BTN);
@@ -167,7 +231,6 @@ class Dom {
     }
     this.sliderContainer.style("display: flex");
 
-    console.log("recordNum:", recordNum);
     if (recordNum == 1) {
       this.recordBtn2.show();
     }
@@ -202,6 +265,11 @@ class Dom {
     btn.removeClass("loading_btn");
   }
 
+  /**
+   * Replaces button with a checkmark
+   *
+   * @param {p5.Element} btn - btn you want to replace with checkmark
+   */
   replaceBtnWithCheckmark(btn) {
     const divElement = document.createElement("div");
     divElement.classList.add("checkmark");

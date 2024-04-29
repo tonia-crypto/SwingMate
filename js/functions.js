@@ -1,3 +1,6 @@
+/**
+ * Handles functionality when finish recording
+ */
 function onFinishRecording() {
   record = false;
   playIndex = 0;
@@ -34,6 +37,9 @@ function onFinishRecording() {
   replayState = true;
 }
 
+/**
+ * Runs when the play button is clicked
+ */
 function onPlayBtn() {
   if (!play) {
     // if play at very end or erronously behind the 'from' slider, restart playIndex at 'from' slider
@@ -54,6 +60,9 @@ function onPlayBtn() {
   }
 }
 
+/**
+ * Handles functionality when crop button is pressed
+ */
 function onCropBtn() {
   let from = slider.getFromValueInt();
   let to = slider.getToValueInt();
@@ -67,6 +76,12 @@ function onCropBtn() {
   playIndex = 0;
 }
 
+/**
+ *
+ * Handles when the record / stop button pressed
+ *
+ * @param {number} btnNum - 1 or 2 representing which button is pressed
+ */
 function onRecordStopBtn(btnNum) {
   if (!record) {
     replayState = false;
